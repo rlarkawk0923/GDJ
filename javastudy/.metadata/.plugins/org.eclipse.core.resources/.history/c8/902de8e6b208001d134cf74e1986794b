@@ -62,10 +62,11 @@ public class Ex05_nested_for {
 			
 			for(int dan = 2; dan <= 9; dan++) {
 				
-			System.out.print(dan+"x"+ n + "=" + (dan*n) + "\t");
+			System.out.print(dan+"x"+ n + "=" + (dan*n)+"\t");
 			
+			
+				
 			}
-			System.out.println();
 		}
 		
 		
