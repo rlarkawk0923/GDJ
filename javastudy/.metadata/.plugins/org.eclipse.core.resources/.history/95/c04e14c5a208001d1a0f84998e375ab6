@@ -1,0 +1,10 @@
+package ex02_loop;
+
+public class Ex05_nested_for {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

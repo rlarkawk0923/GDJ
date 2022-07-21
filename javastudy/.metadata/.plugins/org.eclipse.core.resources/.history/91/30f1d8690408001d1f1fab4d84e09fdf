@@ -1,0 +1,15 @@
+
+public class practice {
+
+	public static void main(String[] args) {
+		
+		//과목별 점수 평균 , 국어=80, 영어=75, 수학=55
+		int a = 80;
+		int b = 75;
+		int c = 55;
+		
+				
+
+	}
+
+}

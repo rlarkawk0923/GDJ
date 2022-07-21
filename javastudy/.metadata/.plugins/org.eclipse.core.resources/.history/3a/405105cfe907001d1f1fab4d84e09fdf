@@ -1,0 +1,10 @@
+package ex01_branch;
+
+public class Ex02_else {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

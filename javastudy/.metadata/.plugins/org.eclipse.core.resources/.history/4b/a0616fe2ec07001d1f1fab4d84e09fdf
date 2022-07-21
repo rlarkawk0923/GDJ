@@ -1,0 +1,61 @@
+package ex01_branch;
+
+public class Ex03_else_if {
+
+	public static void main(String[] args) {
+		
+		// else if문
+		// 조건이 여러 개 사용되는 경우 각 조건을 처리한다.
+		// if(조건) {
+		//		실행문
+		//} else if(조건){
+		//		실행문
+		//} else if(조건){
+		//}
+		
+		//나이에 따른 결과출력
+		//0~7   : 미취학 아동
+		//8~13  : 초등학생
+		//14~16 : 중학생
+		//17~19 :고등학생
+		//20~   :성인
+		
+		int age = 10;
+		
+		if(age < 0 || age >100) {
+			System.out.println("잘못 된 나이");
+		} else if(age<=7) {
+			System.out.println("미취학아동");
+		} else if(age<=13) {
+			System.out.println("초등학생");
+		} else if(age<=16) {
+			System.out.println("중학생");
+		} else if(age<=19) {
+			System.out.println("고등학생");
+		} else {
+			System.out.println("성인");
+		}
+		
+		//연습
+		//월에 따른 계절 출력
+		//봄   : 3 ~ 5
+		//여름 : 6 ~ 8
+		//가을 : 9 ~ 11
+		//겨울 : 12,1~2
+		int month = 1;
+		
+		if(month < 1 || month > 12) {
+			System.out.println("잘못 된 월");
+		} else if(month<=5) {
+			System.out.println("봄");
+		} else if(month<=8) {
+			System.out.println("여름");
+		} else if( month<=11) {
+			System.out.println("가을");
+		} else if( month == 12 || month <=2){
+			System.out.println("겨울");
+		}
+
+	}
+
+}

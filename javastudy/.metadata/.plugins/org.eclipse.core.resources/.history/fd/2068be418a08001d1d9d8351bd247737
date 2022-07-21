@@ -1,0 +1,19 @@
+package ex02_loop;
+
+public class Ex01_for {
+
+	public static void main(String[] args) {
+		// for 문
+		// 연속된 숫자를 생성할 때 주로 사용한다
+		// 배열과 함께 자주 사용된다
+		// for(초기문; 조건문; 증감문){
+		// 		실행문
+		// }
+
+		// 1~10
+		for(int n = 1; n <= 10; n++) {
+			System.out.println(n);
+		}
+	}
+
+}

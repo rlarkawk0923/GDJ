@@ -1,0 +1,23 @@
+package ex02_loop;
+
+public class Ex05_nested_for {
+
+	public static void main(String[] args) {
+		
+		// 1일차 1교시
+		// 1일차 2교시
+		// ...
+		// 1일차 8교시
+		// 2일차 1교시
+		// ...
+		// 3일차 8교시
+		
+		for(int day = 1; day<=3; day++) {
+			for(int hour = 1; hour <= 8; hour++) {
+				System.out.println(day + "일차 " + hour + "교시");
+			}
+		}
+
+	}
+
+}
