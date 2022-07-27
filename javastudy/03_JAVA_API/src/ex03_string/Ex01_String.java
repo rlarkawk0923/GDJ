@@ -100,6 +100,7 @@ public class Ex01_String {
 			System.out.println("이메일입니다.");
 		}else {
 			System.out.println("이메일이 아닙니다.");
+			
 		}
 		
 		//10. 불필요한 공백 제거(좌우 공백)

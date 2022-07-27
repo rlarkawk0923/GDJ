@@ -95,6 +95,8 @@ public class Ex04_switch {
 		// 2등급 : 실행 읽기
 		// 3등급 : 읽기
 		//나머지 : 없음
+		
+		
 		int level = 2;
 		String right = ""; // 권한
 		

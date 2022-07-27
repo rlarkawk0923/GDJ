@@ -19,8 +19,13 @@ public class Ex03_else_if {
 		//14~16 : 중학생
 		//17~19 :고등학생
 		//20~   :성인
+		int age = 15;
+		if(age<=0 || age > 100) {
+			System.out.println();
+		}
 		
-		int age = 10;
+		
+		
 		
 		if(age < 0 || age >100) {
 			System.out.println("잘못 된 나이");
@@ -35,6 +40,8 @@ public class Ex03_else_if {
 		} else {
 			System.out.println("성인");
 		}
+		
+		
 		
 		//연습
 		//월에 따른 계절 출력

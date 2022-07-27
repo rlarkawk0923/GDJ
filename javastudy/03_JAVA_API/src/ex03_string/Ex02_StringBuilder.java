@@ -61,6 +61,8 @@ public class Ex02_StringBuilder {
 		System.out.println(paging);
 		
 		//연습. char 타입의 성별을 입력받기
+		
+		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("성별(남/여)을 입력하세요>>> ");
 		char gender = sc.next().charAt(0);

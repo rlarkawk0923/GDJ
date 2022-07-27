@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="아라"/>
+		<item key="selection" value="Name"/>
 		<list key="findhistory">
+			<item value="name"/>
 			<item value="아라"/>
 			<item value="last"/>
 			<item value="since"/>
