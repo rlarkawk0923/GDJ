@@ -21,7 +21,7 @@ public class UserMain {
 		//객체 생성
 		//user = new User();
 		
-		//객체 선언과 생성을 한 번에
+		//객체 선언과 생성을 한 번에/객체 생성하는 메소드 = 생성자 주황User 클래스와 같은 이름 가지고 있음 생성자는 반환타입 가지지않는다
 		User user = new User();
 		
 		//모든 User 객체는 필드값을 가지고 있다.
