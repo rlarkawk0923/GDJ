@@ -24,7 +24,7 @@ public class Ex01 {
 		
 		//2. 난수 값 생성
 		//Math.random()           0.0<=n<1.0
-		//Math.ramdom()*5	      0.0<=n<5.0
+		//Math.random()*5	      0.0<=n<5.0
 		//(int)(Math.random()*5)    0<=n<5
 		
 		for(int n = 0; n < 2; n++) {
