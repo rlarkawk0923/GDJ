@@ -5,7 +5,6 @@
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
     <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
     <fullyQualifiedTypeName name="java.lang.ArrayStoreException"/>
@@ -31,4 +30,29 @@
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="re_exam.Bankj"/>
+    <fullyQualifiedTypeName name="ex05_constructor.Person"/>
+    <fullyQualifiedTypeName name="com.sun.media.sound.SoftLanczosResampler"/>
+    <fullyQualifiedTypeName name="ex05_constructor.Student"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="com.sun.beans.introspect.PropertyInfo.Name"/>
+    <fullyQualifiedTypeName name="ex06_constructor.Alba"/>
+    <fullyQualifiedTypeName name="ex07_override.Espresso"/>
+    <fullyQualifiedTypeName name="com.sun.tools.sjavac.comp.dependencies.PublicApiCollector"/>
+    <fullyQualifiedTypeName name="java.lang.Void"/>
+    <fullyQualifiedTypeName name="ex07_override.CafeLatte"/>
+    <fullyQualifiedTypeName name="ex07_override.Americano"/>
+    <fullyQualifiedTypeName name="ex08_override.Circle"/>
+    <fullyQualifiedTypeName name="ex08_override.Shape"/>
+    <fullyQualifiedTypeName name="ex08_override.Rectangle"/>
+    <fullyQualifiedTypeName name="ex08_override.Square"/>
+    <fullyQualifiedTypeName name="ex08_override.Coffee"/>
+    <fullyQualifiedTypeName name="ex08_override.Espresso"/>
+    <fullyQualifiedTypeName name="ex08_override.Americano"/>
+    <fullyQualifiedTypeName name="quiz02_coffee.Espresso"/>
+    <fullyQualifiedTypeName name="quiz02_coffee.Americano"/>
+    <fullyQualifiedTypeName name="quiz04_cart.Customer"/>
+    <fullyQualifiedTypeName name="ex11_downcasting.Hybrid"/>
+    <fullyQualifiedTypeName name="ex12_object_class.Person"/>
+    <fullyQualifiedTypeName name="quiz03_bus.Student"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
 </qualifiedTypeNameHistroy>
