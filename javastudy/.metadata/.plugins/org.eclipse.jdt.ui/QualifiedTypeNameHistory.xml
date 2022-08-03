@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
-    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
-    <fullyQualifiedTypeName name="java.lang.ArrayStoreException"/>
-    <fullyQualifiedTypeName name="com.sun.tools.javac.code.Attribute.Array"/>
-    <fullyQualifiedTypeName name="java.util.Arrays"/>
-    <fullyQualifiedTypeName name="ex01_field.User"/>
-    <fullyQualifiedTypeName name="ex02_field.School"/>
-    <fullyQualifiedTypeName name="ex03_method.Calculator"/>
-    <fullyQualifiedTypeName name="ex04_method.VendingMachine"/>
-    <fullyQualifiedTypeName name="ex05_method.Car"/>
-    <fullyQualifiedTypeName name="ex06_method_overload.Calculator"/>
-    <fullyQualifiedTypeName name="java.lang.Math"/>
     <fullyQualifiedTypeName name="java.lang.Double"/>
     <fullyQualifiedTypeName name="sun.util.resources.ext.CalendarData_ar"/>
     <fullyQualifiedTypeName name="ex07_constructor.Computer"/>
@@ -26,7 +14,6 @@
     <fullyQualifiedTypeName name="ex05_constructor.Person"/>
     <fullyQualifiedTypeName name="com.sun.media.sound.SoftLanczosResampler"/>
     <fullyQualifiedTypeName name="ex05_constructor.Student"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="com.sun.beans.introspect.PropertyInfo.Name"/>
     <fullyQualifiedTypeName name="ex06_constructor.Alba"/>
     <fullyQualifiedTypeName name="ex07_override.Espresso"/>
@@ -49,15 +36,28 @@
     <fullyQualifiedTypeName name="quiz03_bus.Student"/>
     <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="User"/>
-    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.NoArgsConstructor.AnyAnnotation"/>
-    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+    <fullyQualifiedTypeName name="com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary"/>
+    <fullyQualifiedTypeName name="library.Book"/>
+    <fullyQualifiedTypeName name="library.Library"/>
+    <fullyQualifiedTypeName name="ex16_interface.Pet"/>
+    <fullyQualifiedTypeName name="ex16_interface.Walkable"/>
+    <fullyQualifiedTypeName name="quiz07_song.Producer"/>
+    <fullyQualifiedTypeName name="quiz07_song.Song"/>
+    <fullyQualifiedTypeName name="quiz08_schedule.WeekScheduler"/>
+    <fullyQualifiedTypeName name="quiz08_schedule.Day"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="ex02_constructor.User"/>
+    <fullyQualifiedTypeName name="ex04_builder.User"/>
+    <fullyQualifiedTypeName name="lombok.Builder"/>
+    <fullyQualifiedTypeName name="ex01_setter.User"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="exam.ParkLot"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="lombok.Getter"/>
     <fullyQualifiedTypeName name="lombok.Setter"/>
-    <fullyQualifiedTypeName name="com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="library.Book"/>
+    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.ToString"/>
-    <fullyQualifiedTypeName name="library.Library"/>
+    <fullyQualifiedTypeName name="exam.ParkingLot"/>
 </qualifiedTypeNameHistroy>

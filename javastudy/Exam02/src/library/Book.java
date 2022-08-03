@@ -8,7 +8,7 @@ import lombok.ToString;
 
 @NoArgsConstructor // new Book()
 @AllArgsConstructor// new Book(1, "어린왕자", "생텍쥐페리")
-@Getter //getBookNo(). getTitle(). getAuthor()
+@Getter//getBookNo(). getTitle(). getAuthor()
 @Setter //setBookNo(1). setTitle("어린왕자"). setAuthor("생텍쥐페리")
 @ToString // String toString(){.....} systemout에서 사용
 
