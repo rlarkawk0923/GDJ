@@ -1,19 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.lang.Double"/>
-    <fullyQualifiedTypeName name="sun.util.resources.ext.CalendarData_ar"/>
-    <fullyQualifiedTypeName name="ex07_constructor.Computer"/>
-    <fullyQualifiedTypeName name="ex09_this.Student"/>
-    <fullyQualifiedTypeName name="ex02_field.Student"/>
-    <fullyQualifiedTypeName name="ex11_static.MyMath"/>
-    <fullyQualifiedTypeName name="ex01_is_a.Student"/>
-    <fullyQualifiedTypeName name="sun.util.resources.CalendarData"/>
-    <fullyQualifiedTypeName name="java.util.Calendar"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="re_exam.Bankj"/>
-    <fullyQualifiedTypeName name="ex05_constructor.Person"/>
-    <fullyQualifiedTypeName name="com.sun.media.sound.SoftLanczosResampler"/>
-    <fullyQualifiedTypeName name="ex05_constructor.Student"/>
     <fullyQualifiedTypeName name="com.sun.beans.introspect.PropertyInfo.Name"/>
     <fullyQualifiedTypeName name="ex06_constructor.Alba"/>
     <fullyQualifiedTypeName name="ex07_override.Espresso"/>
@@ -46,18 +32,32 @@
     <fullyQualifiedTypeName name="quiz07_song.Song"/>
     <fullyQualifiedTypeName name="quiz08_schedule.WeekScheduler"/>
     <fullyQualifiedTypeName name="quiz08_schedule.Day"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="ex02_constructor.User"/>
     <fullyQualifiedTypeName name="ex04_builder.User"/>
     <fullyQualifiedTypeName name="lombok.Builder"/>
     <fullyQualifiedTypeName name="ex01_setter.User"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="exam.ParkLot"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="lombok.Getter"/>
     <fullyQualifiedTypeName name="lombok.Setter"/>
     <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.ToString"/>
     <fullyQualifiedTypeName name="exam.ParkingLot"/>
+    <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+    <fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
+    <fullyQualifiedTypeName name="java.io.File"/>
+    <fullyQualifiedTypeName name="java.io.FileReader"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="ex04_throw.Main.RuntimeException"/>
+    <fullyQualifiedTypeName name="quiz01_updown.UpDownGame"/>
+    <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
+    <fullyQualifiedTypeName name="javax.management.RuntimeErrorException"/>
+    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="parking.Car"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="parking.ParkingLot"/>
 </qualifiedTypeNameHistroy>

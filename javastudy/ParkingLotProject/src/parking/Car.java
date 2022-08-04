@@ -1,4 +1,4 @@
-package exam;
+package parking;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,8 +14,10 @@ import lombok.ToString;
 
 public class Car {
 	
-	private int bookNo;
-	private String contact;
+	private String carNo;
+	private String model;
+	
+
 	
 
 }
