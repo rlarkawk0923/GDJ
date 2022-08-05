@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.sun.beans.introspect.PropertyInfo.Name"/>
-    <fullyQualifiedTypeName name="ex06_constructor.Alba"/>
-    <fullyQualifiedTypeName name="ex07_override.Espresso"/>
-    <fullyQualifiedTypeName name="com.sun.tools.sjavac.comp.dependencies.PublicApiCollector"/>
-    <fullyQualifiedTypeName name="java.lang.Void"/>
-    <fullyQualifiedTypeName name="ex07_override.CafeLatte"/>
     <fullyQualifiedTypeName name="ex07_override.Americano"/>
     <fullyQualifiedTypeName name="ex08_override.Circle"/>
     <fullyQualifiedTypeName name="ex08_override.Shape"/>
@@ -20,7 +14,6 @@
     <fullyQualifiedTypeName name="ex11_downcasting.Hybrid"/>
     <fullyQualifiedTypeName name="ex12_object_class.Person"/>
     <fullyQualifiedTypeName name="quiz03_bus.Student"/>
-    <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="User"/>
     <fullyQualifiedTypeName name="lombok.NoArgsConstructor.AnyAnnotation"/>
     <fullyQualifiedTypeName name="com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary"/>
@@ -48,16 +41,23 @@
     <fullyQualifiedTypeName name="java.io.File"/>
     <fullyQualifiedTypeName name="java.io.FileReader"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="ex04_throw.Main.RuntimeException"/>
     <fullyQualifiedTypeName name="quiz01_updown.UpDownGame"/>
-    <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
+    <fullyQualifiedTypeName name="parking.Car"/>
+    <fullyQualifiedTypeName name="parking.ParkingLot"/>
+    <fullyQualifiedTypeName name="ex05_throws.ParkingLot"/>
+    <fullyQualifiedTypeName name="org.w3c.dom.ranges.RangeException"/>
     <fullyQualifiedTypeName name="javax.management.RuntimeErrorException"/>
+    <fullyQualifiedTypeName name="java.lang.Exception"/>
+    <fullyQualifiedTypeName name="ex06_exception_class.MyException"/>
     <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
+    <fullyQualifiedTypeName name="ex06_exception_class.ParkingLot"/>
+    <fullyQualifiedTypeName name="quiz03_BANK.BanKException"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="prac2.SeatGroup"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="parking.Car"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
-    <fullyQualifiedTypeName name="parking.ParkingLot"/>
 </qualifiedTypeNameHistroy>

@@ -63,7 +63,7 @@
 		<item key="RemoveFinal" value="false"/>
 	</section>
 	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
-		<item key="DIALOG_X_ORIGIN" value="919"/>
+		<item key="DIALOG_X_ORIGIN" value="517"/>
 		<item key="DIALOG_Y_ORIGIN" value="85"/>
 		<item key="DIALOG_WIDTH" value="540"/>
 		<item key="DIALOG_HEIGHT" value="696"/>
@@ -79,8 +79,8 @@
 		<item key="OmitCallToSuper" value="false"/>
 	</section>
 	<section name="DialogBounds_GenerateConstructorUsingFieldsSelectionDialog">
-		<item key="DIALOG_X_ORIGIN" value="703"/>
-		<item key="DIALOG_Y_ORIGIN" value="76"/>
+		<item key="DIALOG_X_ORIGIN" value="258"/>
+		<item key="DIALOG_Y_ORIGIN" value="96"/>
 		<item key="DIALOG_WIDTH" value="531"/>
 		<item key="DIALOG_HEIGHT" value="678"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
@@ -89,8 +89,8 @@
 		<item key="showtypes" value="true"/>
 	</section>
 	<section name="DialogBounds_OverrideMethodDialog">
-		<item key="DIALOG_X_ORIGIN" value="699"/>
-		<item key="DIALOG_Y_ORIGIN" value="186"/>
+		<item key="DIALOG_X_ORIGIN" value="88"/>
+		<item key="DIALOG_Y_ORIGIN" value="269"/>
 		<item key="DIALOG_WIDTH" value="539"/>
 		<item key="DIALOG_HEIGHT" value="513"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
