@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="reser"/>
+		<item key="selection" value="author"/>
 		<list key="findhistory">
+			<item value="author"/>
+			<item value="생성"/>
 			<item value="reser"/>
 			<item value="trim"/>
 			<item value="public"/>
