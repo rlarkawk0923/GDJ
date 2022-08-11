@@ -87,7 +87,11 @@ public class Main {
 			// 생성된 Map 3개를 ArrayList에 저장한 뒤
 			// ArrayList에 저장된 Map 3개를 for문으로 순회하시오
 			
-			Map<String, Object> 
+			Map<String, Object> map1 = new HashMap<String, Object>();
+			map1.put("title", "소나기");
+			map1.put("author", "황순원");
+			map1.put("price", 20000);
+			
 			
 		}
 		

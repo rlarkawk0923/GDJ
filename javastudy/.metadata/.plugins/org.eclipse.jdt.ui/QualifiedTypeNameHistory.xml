@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="quiz04_cart.Customer"/>
-    <fullyQualifiedTypeName name="ex11_downcasting.Hybrid"/>
-    <fullyQualifiedTypeName name="ex12_object_class.Person"/>
-    <fullyQualifiedTypeName name="quiz03_bus.Student"/>
-    <fullyQualifiedTypeName name="User"/>
-    <fullyQualifiedTypeName name="lombok.NoArgsConstructor.AnyAnnotation"/>
-    <fullyQualifiedTypeName name="com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary"/>
-    <fullyQualifiedTypeName name="library.Book"/>
-    <fullyQualifiedTypeName name="library.Library"/>
     <fullyQualifiedTypeName name="ex16_interface.Pet"/>
     <fullyQualifiedTypeName name="ex16_interface.Walkable"/>
     <fullyQualifiedTypeName name="quiz07_song.Producer"/>
@@ -44,20 +35,29 @@
     <fullyQualifiedTypeName name="quiz03_BANK.BanKException"/>
     <fullyQualifiedTypeName name="prac2.SeatGroup"/>
     <fullyQualifiedTypeName name="java.lang.Override"/>
-    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.awt.print.Book"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="java.util.Set"/>
-    <fullyQualifiedTypeName name="java.util.HashSet"/>
     <fullyQualifiedTypeName name="java.lang.Math"/>
+    <fullyQualifiedTypeName name="org.graalvm.compiler.nodes.memory.MemoryAccess"/>
+    <fullyQualifiedTypeName name="java.util.NavigableMap"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.lang.InternalError"/>
+    <fullyQualifiedTypeName name="java.util.TreeMap"/>
+    <fullyQualifiedTypeName name="java.util.HashSet"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.util.Set"/>
+    <fullyQualifiedTypeName name="java.util.Iterator"/>
     <fullyQualifiedTypeName name="java.lang.Object"/>
-    <fullyQualifiedTypeName name="java.util.HashMap"/>
-    <fullyQualifiedTypeName name="java.util.Map.Entry"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="java.util.Map.Entry"/>
+    <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="prac3.BreadAndChange"/>
+    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="prac4.TourGuide"/>
+    <fullyQualifiedTypeName name="prac4.Tour"/>
 </qualifiedTypeNameHistroy>
