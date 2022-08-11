@@ -13,7 +13,7 @@ public class Bank {
 	
 	public void deposit(long money) throws BankException{
 		if(money<0) {
-			throw new BanKException("마이너스 입금 불가", 1);
+			throw new BankException("마이너스 입금 불가", 1);
 		}
 		
 		balance += money;
@@ -31,7 +31,7 @@ public class Bank {
 		return money;
 	}
 	
-	public void transfer(Bank acc, long money) throws BanKException {
+	public void transfer(Bank acc, long money) throws BankException {
 		acc.deposit(withdrawl(money)); // 예외 호출 try-catch or throws
 	}
 	

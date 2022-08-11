@@ -8,9 +8,9 @@ public class Main {
 		Bank mom = new Bank("2222", 100_000);
 		
 		try {
-		me.deposit(-1);
-		mom.transfer(me,  -1);
-		}catch(BanKException e) {
+		//me.deposit(-1);
+		mom.transfer(me,  50000);
+		}catch(BankException e) {
 			System.out.println(e.getMessage() + "," + e.getErrorCode());
 		}
 		

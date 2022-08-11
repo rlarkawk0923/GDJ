@@ -1,6 +1,6 @@
 package quiz04_employee;
 
-public class EmployeeException {
+public class EmployeeException extends Exception {
 	
 	
 	private static final long serialVersionUID = -5434434020338266466L;
