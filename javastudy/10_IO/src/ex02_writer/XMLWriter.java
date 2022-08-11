@@ -50,6 +50,10 @@ public class XMLWriter {
 			Document document = builder.newDocument();
 			document.setXmlStandalone(true);
 			
+			// Document에 products 태그 추가
+			Element products = document.createElement("products");
+			document.appendChild(products);
+			
 			List<String> product1 = Arrays.asList("100", "새우깡", "1500");
 			List<String> product2 = Arrays.asList("101", "양파링", "2000");
 			List<String> product3 = Arrays.asList("102", "홈런볼", "3000");
@@ -57,8 +61,9 @@ public class XMLWriter {
 			List<List<String>> list = Arrays.asList(product1, product2, product3);
 			
 			for(List<String> line : list) {
+				
 				// 태그 생성
-				Element product = document.createElement("product");
+				Element product = document.createElement("product"); //product만들어서 products에 집어넣기
 				Element number = document.createElement("number");
 				number.setTextContent(line.get(0));
 				Element name = document.createElement("name");
@@ -66,7 +71,7 @@ public class XMLWriter {
 				Element price = document.createElement("price");
 				price.setTextContent(line.get(2));
 				// 태그 배치
-				document.appendChild(product);
+				products.appendChild(product); //product만들어서 products에 집어넣기
 				product.appendChild(number);
 				product.appendChild(name);
 				product.appendChild(price);
@@ -76,7 +81,10 @@ public class XMLWriter {
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			transformer.setOutputProperty("encoding", "UTF-8");
-			transformer.setOutputProperty("indent", "yes");
+			transformer.setOutputProperty("indent", "yes"); // 들여쓰기
+			transformer.setOutputProperty("doctype-public", "yes"); // document.setXmlStandalone(true);하면 개행이 안되기때문에
+			
+			
 			
 			Source source = new DOMSource(document);
 			File file = new File("C:\\storage", "product.xml");
