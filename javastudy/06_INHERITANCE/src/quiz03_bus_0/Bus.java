@@ -1,4 +1,4 @@
-package quiz03_bus;
+package quiz03_bus_0;
 
 public class Bus {
 	
@@ -25,7 +25,7 @@ public class Bus {
 	//info 메소드
 	public void info() {
 		for(int i = 0; i<limit; i++) {//limit은 seats 배열의 length와 같은
-			Seat seat =seat[i];
+			Seat seat =seats[i];
 			if(seat != null) { //Seat seat = seats[i]; 없애고 Person
 				Person person = seat.getPerson();
 				System.out.println((i+1) + "," + person.getName());
