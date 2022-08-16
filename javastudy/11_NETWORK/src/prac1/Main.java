@@ -48,6 +48,7 @@ public class Main {
 	}catch(MalformedURLException e) {
 		System.out.println("API 주소 오류");
 	}catch(IOException e) {
+		System.out.println(e.getMessage());
 		System.out.println("API 서버 오류");
 	}
 		
