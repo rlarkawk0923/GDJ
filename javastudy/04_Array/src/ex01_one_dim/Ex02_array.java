@@ -12,15 +12,15 @@ public class Ex02_array {
 		int max = arr[0];
 		int min = arr[0];//첫번째 요소 초기값으로
 		
-		for(int i = 1
-				; i <arr.length; i++) {
+		for(int i = 1; i < arr.length; i++) { // 순서대로 비교하여 최대값 최소값 적립해 나가는 형태
 			if(max < arr[i]) {
 				max = arr[i];
 			}
-			if(min >arr[i]) {
+			if(min > arr[i]) {
 				min = arr[i];
 			}
 		}
+		
 		System.out.println("최대 : " + max);
 		System.out.println("최소 : " + min);
 		

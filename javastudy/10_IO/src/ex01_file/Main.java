@@ -34,6 +34,7 @@ public class Main {
 		
 	}
 	
+		
 	public static void m2() {
 		
 		File file = new File("C:\\storage", "my.txt");

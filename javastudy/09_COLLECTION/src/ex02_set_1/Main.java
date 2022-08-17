@@ -1,4 +1,4 @@
-package ex02_set;
+package ex02_set_1;
 
 import java.util.ArrayList;
 import java.util.Arrays;

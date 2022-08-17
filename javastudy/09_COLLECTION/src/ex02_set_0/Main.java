@@ -1,4 +1,4 @@
-package ex02_set;
+package ex02_set_0;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,6 +56,7 @@ public class Main {
 		
 		Set<Integer> set1 = new HashSet<Integer>(Arrays.asList(1, 2, 3, 4,5));
 		Set<Integer> set2 = new HashSet<Integer>(Arrays.asList(3, 4, 5, 6,7));
+		Set<Integer> set3 = new HashSet<Integer>(Arrays.asList(6, 7));
 		
 		//교집합
 		//교집합 결과는 retainAll() 메소드를 호출한 Set에 저장
@@ -100,7 +101,7 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		m4();
+		m1();
 
 	}
 

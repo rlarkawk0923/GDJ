@@ -1,12 +1,12 @@
 package quiz03_bus_0;
 
-public class Person extends Bus{
+public class Person {
 	
 	private String name;
 	
 	
-	public Person(int cnt, String name) {
-		super(cnt);
+	public Person(String name) {
+		super();
 		this.name = name;
 	}
 
