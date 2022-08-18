@@ -14,39 +14,32 @@ public class ClientMain {
 		Socket socket = null;
 		Scanner sc = null;
 		BufferedWriter out = null;
-
+		
 		try {
-
+			
 			socket = new Socket();
 			socket.connect(new InetSocketAddress("localhost", 9090));
-
-			sc = new Scanner(System.in);
-
-			out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-
+			
 			Client client = new Client(socket);
 			client.start();
-
-			while (true) {
-				System.out.println(">>> ");
-				String message = sc.nextLine();
-				if (message.equalsIgnoreCase("exit")) {
-					break;
-				}
-				out.write(message);
+			
+			sc = new Scanner(System.in);
+			out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+			
+			while(true) {
+				String message = sc.nextLine();  // 채팅내용입력
+				out.write(message + "\n");  // Client.java의 BufferedReader in으로 전달
 				out.flush();
 			}
-		} catch (IOException e) {
+			
+		} catch(IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (out != null) {
+				if(out != null) {
 					out.close();
 				}
-				if (socket.isClosed() == false) {
-					socket.close();
-				}
-			} catch (IOException e) {
+			} catch(IOException e) {
 				e.printStackTrace();
 			}
 		}
