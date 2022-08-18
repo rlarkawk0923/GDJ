@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="response"/>
+		<item key="selection" value="pars"/>
 		<list key="findhistory">
+			<item value="pars"/>
 			<item value="response"/>
 			<item value="int"/>
 			<item value="author"/>

@@ -20,11 +20,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+
 public class Main {
 
 	// 요청
 	// 1. Request
 	// 2. 클라이언트 -> 서버
+	// 요청(어떤 데이터를 (처리)달라고 요청하는것)
+	// 클라이언트가 서버측으로 보내는 것 다 요청
 
 	// 파라미터
 	// 1. Parameter
@@ -34,24 +37,22 @@ public class Main {
 	// 1. Response
 	// 2. 서버 -> 클라이언트
 
+	// 요청할 주소: apiURL
+	// 요청 파라미터(서버로 보내줄 데이터)
+	// 필수/선택
+	// apiURL?파라미터=값&파라미터=값...
+	// api 문서보고 만들어낼 줄 알아야함
+	
 	public static void m1() {
-
-		// 요청(어떤 데이터를 (처리)달라고 요청하는것)
-		// 클라이언트가 서버측으로 보내는 것 다 요청
-
-		// 요청할 주소: apiURL
-		// 요청 파라미터(서버로 보내줄 데이터)
-		// 필수/선택
-		// apiURL?파라미터=값&파라미터=값...
-		// api 문서보고 만들어낼 줄 알아야함
 
 		// 전국종량제 봉투가격 표준데이터
 
 		// API주소
 		String apiURL = "http://api.data.go.kr/openapi/tn_pubr_public_weighted_envlp_api";
+		String serviceKey = "F+1ab/xcA+zyQUwi4kREKGJgPsP/oKt0u1lIkX01IMTq/lDrDNwbIYSpjOFhIl4VjwurwJepgJGOo6eJeH9eaA==";
 
 		try {
-			String serviceKey = "F+1ab/xcA+zyQUwi4kREKGJgPsP/oKt0u1lIkX01IMTq/lDrDNwbIYSpjOFhIl4VjwurwJepgJGOo6eJeH9eaA==";
+			
 			apiURL += "?pageNo=" + URLEncoder.encode("0", "UTF-8");
 			apiURL += "&numOfRows=" + URLEncoder.encode("100", "UTF-8");
 			apiURL += "&type=" + URLEncoder.encode("xml", "UTF-8");
@@ -84,11 +85,7 @@ public class Main {
 			System.out.println("API 주소 접속 실패");
 		}
 
-		// 입력 스트림(응답)
-		// 1. Response
-		// 2. 서버-> 클라이언트
-
-		// 응답 생성
+		// 입력 스트림 (응답) 생성
 		// 1. 응답 성공시 정상 스트림, 실패 시 에러 스트림 사용
 		// 2. 응답 데이터는 StringBuilder에 저장
 
@@ -117,7 +114,7 @@ public class Main {
 		// API로부터 전달받은 xml 데이터
 		String response = sb.toString();
 
-		// File 생성
+		// XML File 생성
 		File file = new File("C:\\storage", "api1.xml");
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
@@ -125,8 +122,14 @@ public class Main {
 			bw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} // ---------------------
-
+		}
+		
+		// 접속 종료
+		con.disconnect();
+	}
+public static void m2() {
+	// XML File 생성
+	File file = new File("C:\\storage", "api1.xml");
 		// xml 분석
 		try {
 			// dom : 문서를 객체로 바꾸는
@@ -169,12 +172,10 @@ public class Main {
 			e1.printStackTrace();
 		}
 
-		// 접속 종료
-		con.disconnect();
 
 	}
 
-	public static void m2() {
+	public static void m3() {
 
 		// 보건복지부_코로나 19 감염현황 조회 서비스
 
@@ -248,7 +249,7 @@ public class Main {
 
 	}
 
-	public static void m3() {
+	public static void m4() {
 
 		// xml 파싱
 
@@ -297,7 +298,7 @@ public class Main {
 
 	}
 
-	public static void m4() {
+	public static void m5() {
 
 		String serviceKey = "F+1ab/xcA+zyQUwi4kREKGJgPsP/oKt0u1lIkX01IMTq/lDrDNwbIYSpjOFhIl4VjwurwJepgJGOo6eJeH9eaA==";
 
@@ -364,9 +365,6 @@ public class Main {
 		}
 	}
 
-	public static void m5() {
-
-	}
 
 	public static void m6() {
 		File file = new File("C:\\storage", "api3.xml");
@@ -406,10 +404,6 @@ public class Main {
 		}
 	}
 
-	public static void m7() {
-		
-	}
-		
 	
 	public static void main(String[] args) {
 		m6();
