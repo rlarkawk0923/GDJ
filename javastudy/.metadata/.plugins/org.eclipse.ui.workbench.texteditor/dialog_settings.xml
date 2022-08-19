@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="pars"/>
+		<item key="selection" value="json"/>
 		<list key="findhistory">
+			<item value="xml"/>
 			<item value="pars"/>
 			<item value="response"/>
 			<item value="int"/>
@@ -23,6 +24,7 @@
 			<item value="since"/>
 		</list>
 		<list key="replacehistory">
+			<item value="json"/>
 			<item value="long"/>
 			<item value="private"/>
 			<item value="int"/>

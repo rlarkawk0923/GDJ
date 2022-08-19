@@ -12,6 +12,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+
 public class Main {
 	
 	public static void m1() {
@@ -82,6 +89,25 @@ public class Main {
 		e.printStackTrace();
 	}
 }
+	
+	public static void m2() {
+		
+		File file = new File("C:\\storage", "prac_api.xml");
+		
+		try {
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document doc = builder.parse(file);
+			
+			Element root = doc.getDocumentElement();
+			
+			NodeList items = root.getElementsByTagName("body");
+			for(int i = 0; i < items.getLength(); i++) {
+				Element body = (Element)items.bo
+			}
+		}
+		
+	}
 	public static void main(String[] args) {
 		
 		m1();
