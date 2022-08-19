@@ -21,7 +21,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 
-public class Main {
+public class Main1_XML {
 
 	// 요청
 	// 1. Request
