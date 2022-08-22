@@ -101,9 +101,10 @@ public class Main {
 			
 			Element root = doc.getDocumentElement();
 			
-			NodeList items = root.getElementsByTagName("body");
-			for(int i = 0; i < items.getLength(); i++) {
-				Element body = (Element)items.bo
+			NodeList bodies = root.getElementsByTagName("body");
+			for(int i = 0; i < bodies.getLength(); i++) {
+				Element body = (Element)bodies.item(i);
+				
 			}
 		}
 		
