@@ -8,6 +8,7 @@
 		<item key="isRegEx" value="false"/>
 		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="package api;"/>
 			<item value="xml"/>
 			<item value="array"/>
 			<item value="pars"/>
@@ -22,7 +23,6 @@
 			<item value="name"/>
 			<item value="아라"/>
 			<item value="last"/>
-			<item value="since"/>
 		</list>
 		<list key="replacehistory">
 			<item value="json"/>
