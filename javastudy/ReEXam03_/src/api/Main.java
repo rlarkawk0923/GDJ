@@ -52,6 +52,11 @@ public class Main {
 			
 			// JSONObject item = XML.getJSONObject("channel"); // 체이닝으로
 			
+			/*
+			JSONObject channel = XML.toJSONObject(sb.toString())
+								.getJSONObject("rss")
+								.getJSONObject("channel");
+			*/
 		
 			
 			
