@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="do"/>
 		<list key="findhistory">
+			<item value="do"/>
+			<item value="애"/>
 			<item value="package api;"/>
 			<item value="속성"/>
 			<item value="xml"/>
@@ -21,8 +23,6 @@
 			<item value="trim"/>
 			<item value="public"/>
 			<item value="double"/>
-			<item value="name"/>
-			<item value="아라"/>
 		</list>
 		<list key="replacehistory">
 			<item value="json"/>
