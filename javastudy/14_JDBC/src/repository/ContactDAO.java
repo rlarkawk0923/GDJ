@@ -5,8 +5,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
+import domain.ContactDTO;
 
 public class ContactDAO {
 
@@ -34,9 +37,11 @@ public class ContactDAO {
 	/******************* Field ****************************/
 
 	// 데이터베이스에 접근할 때 사용하는 공통 요소
-	private Connection con;
-	private PreparedStatement ps;
-	private ResultSet rs;
+	private Connection con; // DB 접속
+	private PreparedStatement ps; // 쿼리문 실행
+	private ResultSet rs; // SELECT 결과
+	private String sql; // 쿼리문
+	private int result; // INSERT, UPDATE, DELETE 결과
 
 	/******** Method *********/
 
@@ -85,9 +90,124 @@ public class ContactDAO {
 		} catch (Exception e) {
 			System.out.println("오류");
 		}
+	}
+
+	// 연락처 추가 메소드
+	// 1.매개변수 : ContactDTO
+	// 2.반환값 : 0 또는 1
+	public int insertContact(ContactDTO contact) {
+		try {
+			con = getConnection();
+			sql = "INSERT INTO CONTACT VALUES(CONTACT_SEQ.NEXTVAL,?,?,?,SYSDATE)";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, contact.getName());
+			ps.setString(2, contact.getTel());
+			ps.setString(3, contact.getEmail());
+			result = ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return result;
+	}
+
+	// 연락처 수정 메소드
+	public int updateContact(ContactDTO contact) {
+		try {
+			con = getConnection();
+			sql = "UPDATE CONTACT SET NAME=?,TEL=?,EMAIL=?WHERE CONTACT_NO=?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, contact.getName());
+			ps.setString(2, contact.getTel());
+			ps.setString(3, contact.getEmail());
+			ps.setInt(4, contact.getContact_no());
+			result = ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return result;
+	}
+
+	// 연락처 삭제 메소드
+	public int deleteContact(int contact_no) {
+
+		try {
+			con = getConnection();
+			sql = "DELETE FROM CONTACT WHERE CONTACT_NO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, contact_no);
+			result = ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return result;
+	}
+
+	// 연락처 조회 메소드
+	public ContactDTO selectContactByNo(int contact_no) {
+
+		ContactDTO contact = null;
+
+		try {
+			con = getConnection();
+			sql = "SELECT CONTACT_NO, NAME, TEL, EMAIL, REG_DATE FROM CONTACT WHERE CONTACT_NO = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, contact_no);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				contact = new ContactDTO();
+				contact.setContact_no(rs.getInt(1));
+				contact.setName(rs.getString(2));
+				contact.setTel(rs.getString(3));
+				contact.setEmail(rs.getString(4));
+				contact.setReg_date(rs.getDate(5));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return contact;
 
 	}
+
+	// 연락처 목록 메소드
+	// 1. 매개변수 : 없음
+	// 2. 반환겂 : List<ContactDTO>
+	public List<ContactDTO> selectAllContacts() {
+
+		List<ContactDTO> contacts = new ArrayList<ContactDTO>();
+
+		try {
+			con = getConnection();
+			sql = "SELECT CONTACT_NO, NAME, TEL, EMAIL, REG_DATE FROM CONTACT";
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				ContactDTO contact = ContactDTO.builder().contact_no(rs.getInt(1)).name(rs.getString(2))
+						.tel(rs.getString(3)).email(rs.getString(4)).reg_date(rs.getDate(5)).build();
+				contacts.add(contact);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+
+		return contacts;
+
+	}
+
 }
+
 /*
  * public static void main(String[] args) {
  * 

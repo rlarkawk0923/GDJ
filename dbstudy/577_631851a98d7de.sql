@@ -93,17 +93,88 @@ COMMIT;
 
 SET SERVEROUTPUT ON;
 
---7. 학생명 학과명, 담당교수명조인
+
+-- 1.
+-- 학생(STUDENT) 테이블의 생일(BIRTHDATE) 칼럼은 현재 'YY/MM/DD' 형식으로 저장되어 있다.
+-- 생일(BIRTHDATE) 칼럼 데이터를 'YYYY-MM-DD' 형식으로 조회하는 쿼리문을 작성하시오. (5점)
+
+SELECT TO_CHAR(BIRTHDATE, 'YYYY-MM-DD') AS 생일 FROM STUDENT;
+
+-- 2.
+-- 교수(PROFESSOR) 테이블의 고용일(HIREDATE) 칼럼을 이용하여 현재까지 근무한 일수를 조회하는 쿼리문을 작성하시오.
+-- 결과는 정수로 내림 또는 절사(소수점 잘라 버리기)하여 표시하시오. (5점)
+SELECT TRUNC(SYSDATE - HIREDATE) AS 근무일수 FROM PROFESSOR;
+
+-- 3.
+-- 학생(STUDENT) 테이블의 키(HEIGHT) 칼럼의 데이터 중에서 가장 높은 키를 조회하는 쿼리문을 작성하시오. (5점)
+SELECT MAX(HEIGHT) AS 가장높은키 FROM STUDENT;
+
+-- 4.
+-- 학생(STUDENT) 테이블에 있는 전체 학생수를 조회하는 쿼리문을 작성하시오. (5점)
+SELECT COUNT(*) AS 전체학생수 FROM STUDENT;
+
+-- 5.
+-- 오라클 데이터베이스에 이미 설치되어 있는 스키마(사용자) HR계정을 사용하기 위해서 HR계정의 LOCK을 풀고 새로운 비밀번호 '123456'을 지정하는 쿼리문을 작성하시오.
+-- HR계정의 LOCK을 푸는 쿼리문과 HR계정에 새로운 비밀번호를 지정하는 쿼리문을 각각 작성하시오.
+-- 쿼리문을 실행하지는 마시오. (5점)
+
+-- HR계정 LOCK 해제 :
+ALTER USER HR ACCOUNT UNLOCK;
+--HR계정에 새로운 비밀번호 지정 :
+ALTER USER HR IDENTIFIED BY 123456;
+
+-- 6.
+-- 다음 사용자를 생성하는 쿼리문과 생성된 사용자에 권한을 부여하는 쿼리문을 각각 작성하시오.
+-- 쿼리문을 실행하지는 마시오. (5점)
+--     1) 사용자명 : WEBMASTER
+--     2) 비밀번호 : 1111
+--     3) 사용권한 : CONNECT, RESOURCE
+
+--사용자 생성 : 
+CREATE USER WEBMASTER IDENTIFIED BY 1111;
+--사용자 권한부여 :
+GRANT CONNECT, RESOURCE TO WEBMASTER;
+
+-- 7. 학생명, 학과명, 담당교수명을 조회하시오. (10점)
+-- 결과 이미지는 웹 화면을 참고하시오.
 SELECT S.SNAME, D.DNAME, P.PNAME
 FROM PROFESSOR P INNER JOIN DEPARTMENT D
 ON P.PROFNO = D.PROFNO INNER JOIN STUDENT S
 ON D.DEPTNO = S.DEPTNO;
+
+-- 8. 학과별 학생수를 조회하시오. (10점)
+-- 결과 이미지는 웹 화면을 참고하시오.
+
+SELECT D.DNAME AS 학과명, COUNT(*) AS 학생수
+FROM DEPARTMENT D INNER JOIN STUDENT S
+ON D.DEPTNO = S.DEPTNO
+GROUP BY D.DEPTNO, D.DNAME;
+
+-- 9. 학과별 담당교수들의 평균급여를 조회하시오. 평균급여의 소수점 이하는 모두 버리시오. (10점)
+-- 결과 이미지는 웹 화면을 참고하시오.
+
+SELECT D.DNAME AS 학과명, AVG(P.SAL) AS 평균급여
+FROM PROFESSOR P INNER JOIN DEPARTMENT D
+ON D.PROFNO = P.PROFNO
+WHERE D.DNAME IN('멀티미디어학과', '컴퓨터공학과', '전자공학과') 
+GROUP BY DEPTNO, D.DNAME;
+
+-- 10. 학년별 평균키와 평균몸무게를 조회하시오. 학년을 기준으로 오름차순 정렬하고, 평균키와 평균몸무게는 모두 소수점 1자리만 남기고 반올림하시오. (10점)
+-- 결과 이미지는 웹 화면을 참고하시오.
+
+SELECT H.GRADE AS 학년, ROUND(AVG(H.HEIGHT), 1) AS 평균키, ROUND(AVG(W.WEIGHT), 1) AS 평균몸무게
+FROM STUDENT H INNER JOIN STUDENT W
+ON H.STUDNO = W.STUDNO
+GROUP BY H.GRADE 
+ORDER BY H.GRADE  ASC;
 
 -- 11.
 -- 다음 설명을 읽고 올바른 사용자 함수를 작업하시오.
 --    1) 학생의 아이디(USERID)를 전달하면 해당 아이디를 가진 학생의 학번(STUDNO)을 반환하는 GET_STUDENT() 사용자 함수를 작성하시오. (8점)
 --    2) 아이디가 'jun123'인 학생의 학번을 조회하는 쿼리문을 작성하시오. (2점)
 -- 결과 이미지는 웹 화면을 참고하시오.
+
+-- 1)
 CREATE OR REPLACE FUNCTION GET_STUDENT(UID STUDENT.USERID%TYPE)
 RETURN NUMBER
 IS 
@@ -117,8 +188,8 @@ BEGIN
       END GET_STUDENT;
 
 -- 2) 
-SELECT DISTINCT GET_STUDENT('jun123') AS 학번
-    FROM STUDENT;
+SELECT DISTINCT GET_STUDENT('jun123') AS 학번 FROM STUDENT;
+
 -- 12.
 -- STUDENT 테이블의 행(Row) 단위로 삭제와 갱신이 발생한 이후 'STUD_TRIG 동작'이라는 서버메시지가 나타나도록 STUD_TRIG 트리거를 작성하시오. (10점)
 CREATE OR REPLACE TRIGGER STUD_TRIG
@@ -136,22 +207,7 @@ END STUD_TRIG;
 -- 프로시저가 정상 동작하면 COMMIT, 예외가 발생하면 ROLLBACK 처리하시오.
 --    1) 프로시저를 작성하시오. (8점)
 --    2) 학과번호가 101인 학과를 대상으로 프로시저 실행 방법을 작성하시오. (2점)
-
--- PROFESSOR - DEPARTMENT
--- PROFNO(P) - PROFNO(F)               :조인조건1
---              DEPTNO(P)- DEPTNO(F)   :조인조건2
---                          STUDNO(P)
-
--- 생성순서 : PROFESSOR -> DEPARTMENT -> STUDENT
--- 삭제순서 : STUDENT -> DEPARTMENT -> PROFESSOR
-
--- DEPTNO에 연관된 모든 테이블의 데이터 지우기
--- 1. STUDENT 테이블에서 DEPTNO = 101인 정보 지우기
--- 2. DEPARTMENT 테이블에서 DEPTNO=101인 PROFNO 저장하기 (백업)
--- 3. DEPARTMENT 테이블에서 DEPTNO=101 정보 지우기
--- 3. PROFESSOR 테이블에서 2단계에서 저장한 PROFNO와 동일한 정보 지우기
-
--- 1) 정의
+-- 1)
 CREATE OR REPLACE PROCEDURE MY_PROC(DNO IN DEPARTMENT.DEPTNO%TYPE)
 IS
     PNO PROFESSOR.PROFNO%TYPE;
@@ -166,8 +222,6 @@ EXCEPTION
         DBMS_OUTPUT.PUT_LINE(SQLCODE);
         DBMS_OUTPUT.PUT_LINE(SQLERRM);
 END MY_PROC;
-
         
---2)호출
+--2)
 EXECUTE MY_PROC(101);
-

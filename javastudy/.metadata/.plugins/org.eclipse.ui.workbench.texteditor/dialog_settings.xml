@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="ps = "/>
+		<item key="selection" value="play"/>
 		<list key="findhistory">
+			<item value="play"/>
 			<item value="ps = "/>
 			<item value="do"/>
 			<item value="애"/>
@@ -22,7 +23,6 @@
 			<item value="생성"/>
 			<item value="reser"/>
 			<item value="trim"/>
-			<item value="public"/>
 		</list>
 		<list key="replacehistory">
 			<item value="json"/>
