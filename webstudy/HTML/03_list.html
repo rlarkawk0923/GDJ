@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1. 순서가 없는 목록(unordered list)
+            1) 블록 레벨 (자동줄바꿈)
+            2) 각 목록을 글머리기호로 나타냄(<ul> 태그의 type속성을 씀) 잘 안쓰긴함ㅎㅎ;;
+                (1) <ul type="disc"> : ● (디폴트, type 속성을 생략하면 적용)disc 동그랗다 원판
+                (2) <ul type="circle"> : ○
+                (3) <ul type="square"> : ■
+            3) <ul> 태그 : 전체 목록을 포함하는 태그
+            4) <li> 태그 : 목록을 구성하는 각 항목을 나타내는 태그
+            5) 부모 태그로 <ul> 태그를 사용하고 자식 태그로 <li> 태그를 사용함
+     -->
+<ul type="disc">
+     <li>맥주</li>
+     <li>명란젓</li>
+     <li>미역국</li>
+     <li>소고기국밥</li>
+     <li>산적꼬치</li>
+
+</ul> <!-- ul 안에 있어야 항목 존재한다고 인식함-->
+
+<!-- 
+    Emmet 활용하기
+    5개 <li> 태그를 가지는 <ul> 태그 : ul>li*5 
+ -->
+<ul type ="square">
+    <li>카페</li>
+    <li>메일</li>
+    <li>뉴스</li>
+    <li>지도</li>
+    <li>증권</li>
+</ul>
+
+<!-- 
+    2. 순서가 있는 목록
+        1) 블록 레벨
+        2) 각 목록을 번호로 나타냄(<ol> 태그의 type 속성을 사용)
+            (1) <ol type="1"> : 1,2,3,...(디폴트)
+            (2) <ol type="A"> : A,B,C,...
+            (3) <ol type="a"> : a,b,c,...
+            (4) <ol type="I"> : I,II,III,...
+            (5) <ol type="i"> : i,ii,iii,...
+        3) <ol> 태그 : 전체 목록을 포함하는 태그
+        4) <li> 태그 : 목록을 구성하는 각 항목을 나타내는 태그
+        5) 부모 태그로 <ol> 태그를 사용하고 자식 태그로 <li> 태그를 사용함
+ -->
+<h2> SELECT문은 어느 언어에 속하는가?</h2>
+<ol type="1">
+    <li>DDL</li>
+    <li>DML</li>
+    <li>DCL</li>
+    <li>DQL</li>
+    <li>TCL</li>
+</ol>
+
+</body>
+</html>
