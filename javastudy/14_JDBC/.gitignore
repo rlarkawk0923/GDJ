@@ -1,0 +1,4 @@
+/bin/
+
+# DB접속 정보
+db.properties

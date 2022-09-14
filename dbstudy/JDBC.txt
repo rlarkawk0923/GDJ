@@ -39,6 +39,10 @@ PreparedStatement의 로그인 상황
 -2. Auto Commit이기 때문에 코드로 commit을 할 필요가 없다.
 
 - SELECT
+ 1. 실행은 executeQuery() 메소드를 이용
+ 2. 실행 결과는 ResultSet 객체
+ 3. ResultSet 객체는 테이블 행(Row) 단위로 스캔하고 가져올 수 있는 객체
+ 4. next() 메소드를 이용해서 행(Row) 단위로 스캔한다 넥스트 메소드 한번당 행 하나 넥스트 메소드 10번-행 10개
 
 -DTO와 DAO
     1. DTO : Data Transfer Object, 데이터 전송 객체, DB로 전송할 데이터는 하나로 모아서 처리, 클래스를 이용해 객체로 만들어서 전달하는 형태, 데이터 저장 객체를 처리하는 영역으로 도메인(domain) 패키지로 처리

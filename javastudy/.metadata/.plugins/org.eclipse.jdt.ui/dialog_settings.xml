@@ -137,7 +137,7 @@
 		<item key="History" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History/&gt;"/>
 	</section>
 	<section name="DialogBounds_SuperInterfaceSelectionDialog">
-		<item key="DIALOG_X_ORIGIN" value="-495"/>
+		<item key="DIALOG_X_ORIGIN" value="-388"/>
 		<item key="DIALOG_Y_ORIGIN" value="-29"/>
 		<item key="DIALOG_WIDTH" value="373"/>
 		<item key="DIALOG_HEIGHT" value="549"/>
