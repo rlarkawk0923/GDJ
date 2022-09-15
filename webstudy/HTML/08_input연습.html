@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 연습문제 1 -->
+    <h1>연습문제-1</h1>
+    <form action=""01_overview.html" method="post">
+        <input type="email" placeholder="example@naver.com">
+        <input type="password" placeholder="비밀번호">
+    <button>로그인</button>
+    </form>
+    <br>
+    <hr>
+    <br>
+    <!-- 연습문제 2 -->
+    <h1>연습문제-2</h1>
+    <form action="01_overview.html" method="post">
+    <table>
+        <tbody>
+            <tr>
+                <td><input type="text" placeholder="아이디"></td>
+                <td rowspan="2"><button>로그인</button></td>
+                
+            </tr>
+            <tr>
+                <td>
+                <input type="password" placeholder="비밀번호">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+    <br>
+    <hr>
+    <br>
+    <!-- 연습문제 3 -->
+    <h1>연습문제-3</h1>
+    <form action="">
+    <table>
+        <caption><strong>개인 정보 작성</strong></caption>
+        <tbody>
+            <tr>
+                <td>이름 &nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>메일주소 &nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><input type="email"></td>
+            </tr>
+            <tr>
+                <td>연락처 &nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>블로그/홈페이지 &nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><input type="url"></td>
+            </tr>
+            <tr> 
+                <td style="text-align: center;" colspan="2"><button>제출하기</button> <button value="clear">다시작성</button></td>
+            </tr>
+        </tbody>
+    </table>
+    </form>
+    <br>
+    <hr>
+    <br>
+    <!-- 연습문제 4 -->
+    <h1>연습문제-4</h1>
+    <form action="01_overview.html">
+    <table>
+        <a href="https://naver.com">
+        <img src="../../images/naver.png" width="150">
+        </a><br>
+        <tbody>
+            <tr>
+                <label for="user_id"><strong>아이디</strong></label><br>
+
+            </tr>
+            <tr>
+                <td><input type="text" name="id" id="user_id">@naver.com</td>
+            </tr>
+            <tr>
+                <td>
+                &nbsp;
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td><strong>비밀번호</strong></td>
+            </tr>
+            <tr>
+                <td><input type="password"></td>
+            </tr>
+            <tr>
+                <td>
+                &nbsp;
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td><strong>비밀번호 재확인</strong></td>
+
+            </tr>
+            <tr>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>
+                &nbsp;
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td><strong>이름</strong></td>
+            </tr>
+            <tr>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>
+                &nbsp;
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td><strong>생년월일</strong></td>
+
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="년(4자)" size="3">
+                    <input type="text" list="months" name="month" placeholder="월" size="2">
+                    <datalist id="months">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </datalist>
+                    <input type="text" placeholder="일" size="3">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                &nbsp;
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td><strong>성별</strong></td>
+            </tr>
+            <tr>
+                <td><input type="text" list="genders" name="gender" placeholder="성별" size="3">
+                <datalist id="genders">
+                    <option value="여성">여성</option>
+                    <option value="남성">남성</option>
+                    <option value="선택안함">선택안함</option>
+                </datalist>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                &nbsp;
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td><strong>본인 확인 이메일</strong>(선택)</td>
+            </tr>
+            <tr>
+                <td><input type="text" placeholder="선택입력">
+            </td>
+            </tr>
+            <tr>
+                <td>
+                &nbsp;
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td><strong>휴대전화</strong></td>
+            </tr>
+            <tr>
+                <tr>
+                    <td>
+                    <input type="text" list="conts" name="cont" placeholder="대한민국 +82" size="8">
+                    <datalist id="conts">
+                        <option value="일본 +81">일본 +81</option>
+                        <option value="대한민국 +82">대한민국 +82</option>
+                        <option value="홍콩 +852">홍콩 +852</option>
+                    </datalist>
+                    </td>
+                </tr>
+            </tr>
+            <tr>
+                <td><input type="text" name="tel" id="user_tel" placeholder="전화번호 입력" size="10">
+                    <input type="button" value="인증번호 받기"><br>
+                    <input type="text" placeholder="인증번호 입력하세요" disabled>
+                    <br><br>
+                    <button>가입하기</button>
+            </td>
+            </tr>
+            <input type="text" name="tel" id="user_tel" placeholder="전화번호 입력" size="10">
+            <input type="button" value="인증번호 받기"><br>
+            <input type="text" placeholder="인증번호 입력하세요" disabled>
+            <br><br>
+            <button>가입하기</button>
+        </tbody>
+    </table>
+    </form>
+</body>
+</html>

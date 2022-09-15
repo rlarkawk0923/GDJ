@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=+, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        1. <link> 태그를 이용한 구글 폰트 사용
+            1) <link> 태그를 복붙
+            2) CSS속성 font-family를 복붙
+     -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">    
+     <style>
+        h1{
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        div{
+            font-size: 200px;
+            font-family: 'Black Han Sans', sans-serif;
+        }
+    </style>
+    <!-- 
+        2. @import를 이용한 구글 폰트 사용(*.css 파일 분리) 
+            1) 05_webfont.css 파일 생성
+            2) css 파일에 @import + font - family 모두 복붙
+            3) <link> 태그를 이용해서 css 파일 포함
+    -->
+    <link rel="stylesheet" href="05_webfont.css">
+</head>
+<body>
+    폰트바꿈
+    <h1>폰트바꿈</h1>
+    <p>만나서 반갑습니다</p>
+    <div>호엥</div>
+    <div1>야야야야야야</div1>
+
+</body>
+</html>
