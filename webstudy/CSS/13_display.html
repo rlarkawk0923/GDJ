@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .box1 > img{
+            width: 320px;
+        }
+        .box1 > img:nth-of-type(2){
+            /* display: none; 자리를 차지하지 않고 보이지도 않음 */
+            display: none;
+        }
+    </style>
+    <div class="box1">
+        <img src="../../images/flower1.jpg" alt="꽃">
+        <img src="../../images/flower2.jpg" alt="꽃">
+        <img src="../../images/flower3.jpg" alt="꽃">
+    </div>
+
+    <hr>
+
+    <style>
+        .box2 > input[type=checkbox]{
+            display: none;
+        }
+        .box2 > label:hover {
+            cursor: pointer;
+        }
+        .box2 > input[type=checkbox]:checked + label{
+            font-weight: 900;
+        }
+    </style>
+    <div class="box2">
+        <input type="checkbox" id="service">
+        <label for="service">이용약관 동의</label><br>
+        <input type="checkbox" id="privacy">
+        <label for="privacy">개인정보 수집 및 이용 동의</label><br>
+        <input type="checkbox" id="location">
+        <label for="location">위치기반서비스 이용약관 동의</label><br>
+    </div>
+    <hr>
+    <style>
+        /* 블록-> 인라인 변경*/
+        .box3{
+            display: inline;
+            /* 인라인에서는 적용되지않는 CSS속성 */
+            width: 500px;
+            height: 500px;
+            text-align: center;
+        }
+        </style>
+    <div class="box3">BOX3</div>
+    <hr>
+    <style>
+        /* 인라인 -> 블록 변경 */
+        .box4{
+            display: block;
+            border: 1px solid gray;
+
+        /* 인라인에서는 적용되지않는 CSS속성 */
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        }
+    </style>
+    <span class="box4">BOX4</span>
+<hr>
+<style>
+    .box5, .box6{
+
+        /* 
+            inline-block
+         */
+        display: inline-block;
+        border: 1px solid gray;
+        width: 100px;
+        height: 100px;
+        text-align: center;
+        }
+</style>
+<div class="box5">BOX5</div>
+<div class="box6">BOX6</div>
+</body>
+</html>

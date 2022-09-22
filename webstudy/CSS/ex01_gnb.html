@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+
+        * { /* 모두에게 속성 적용 / 초기화 작업*/
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            color: #000000;
+            text-decoration: none; /*밑줄 없애기*/
+        }
+        ul {
+            border-top:  1px solid gray;
+            border-bottom:  1px solid gray;
+            list-style: none;       /*글머리기호 없애기*/
+            display: flex;          /*메뉴들의 수평 레이아웃 배치*/
+        }
+
+        ul > li {
+            /* border : 1px solid red; */
+            width: 80px;            /*너비*/
+            height: 50px;           /*높이*/
+            text-align: center;     /* 가로 가운데 정렬*/
+            line-height: 50px;      /* 세로 가운데 정렬*/
+        }
+        ul > li > a {
+            display: block; /* 블록 레벨의 요소만 너비/높이를 가질 수 있음 */
+            width: 100%;    /* 부모 요소 li와 같은 너비*/
+            height: 100%;   /* 부모 요소 li와 같은 높이*/
+        }
+
+        ul > li:hover{
+            height: 47px;
+            border-bottom: 3px solid rgb(48, 180, 48);
+        }
+        ul > li:hover > a{
+            color:rgb(48, 180, 48);
+
+        }
+
+    </style>
+    <ul>
+        <li>
+            <a href="javascript:void(o)">사전</a>
+        </li>
+        <li>
+            <a href="javascript:void(o)">뉴스</a>
+        </li>
+        <li>
+            <a href="javascript:void(o)">증권</a>
+        </li>
+        <li>
+            <a href="javascript:void(o)">부동산</a>
+        </li>
+        <li>
+            <a href="javascript:void(o)">지도</a>
+        </li>
+        <li>
+            <a href="javascript:void(o)">VIBE</a>
+        </li>
+        <li>
+            <a href="javascript:void(o)">도서</a>
+        </li>
+        <li>
+            <a href="javascript:void(o)">웹툰</a>
+        </li>
+    </ul>
+
+</body>
+</html>
