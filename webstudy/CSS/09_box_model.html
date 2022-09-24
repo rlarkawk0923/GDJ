@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .box1{
+        /*너비*/  width: 100px;
+        /*높이*/  height: 100px;
+        /*배경*/  background-color: seagreen;
+        }
+        .box2{
+        /* 인라인 요소(span, a 등)은 너비/높이 적용 불가 */
+            width: 100px;
+            height: 100px;
+            background-color: salmon;
+        }
+    </style>
+    <div class="box1">BOX1</div>
+    <span class="box2">BOX2</span>
+
+    <hr>
+    <style>
+        .wrap{
+            /* 부모 */
+            width: 200px;
+            height: 200px;
+        }
+        .wrap > .box3 {
+            /* 자식 : %의 기준은 부모의 크기 */
+            width : 50%;
+            height : 50%;
+            background-color: pink;
+        }
+        .wrap > .box4 {
+            width: 25%;
+            height: 25%;
+            background-color: cyan;
+        }
+    </style>
+
+    <div class="wrap">
+        <div class="box3">BOX3</div>
+        <div class="box4">BOX4</div>
+    </div>
+    <hr>
+    <style>
+        .box5{
+            /* 테두리 두께 */
+            border-width: 1px;
+            /* 테두리 종류 */
+            border-style: solid;
+            /* 테두리 색상 */
+            border-color: rgb(0, 0, 0);
+            /* 단축 속성 한번에 지정*/
+            border: 2px dashed red;
+            /* 방향 선택 */
+            border-bottom: 3px double seagreen;
+        }
+    </style>
+    <div class="box5">BOX5</div>
+    
+    <style>
+        .box6{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            /* 
+            모서리 곡률
+            ┌──────────┐
+            │ 1      2 │
+            │          │
+            │ 4      3 │
+            └──────────┘
+            */
+            /*  전체        */  border-radius: 5px;
+            /*  13  24      */  border-radius: 10px 0;
+            /*  1   24   3  */  border-radius: 20px 0 20px;
+            /*  1  2  3  4  */  border-radius: 5px 10px 15px 20px;
+            /* 시계방향으로 적용됨*/
+            border-radius: 5px;
+            border-radius: 10px 0;
+            border-radius: 20px 0 20px;
+            border-radius: 5px 10px 15px 20px;
+        }
+    </style>
+    <div class="box6">BOX6</div>
+
+    <hr>
+    <style>
+        .box7{
+            border : 1px solid black;
+            /* 내부 여백 : content와 border 사이 공간
+            ┌─────────┐
+            │    1    │
+            │ 4     2 │
+            │    3    │
+            └─────────┘
+            */
+            /*  전체        */  padding: 0;
+            /*  13  24      */  padding: 10px 20px;
+            /*  1   24   3  */  padding: 20px 0px 20px;
+            /*  1  2  3  4  */  padding: 5px 10px 15px 20px;
+        }
+    </style>
+    <div class="box7">BOX7</div>
+<hr>
+    <style>
+        .box8{
+        /* 
+            박스 크기 : 너비 / 높이 + 테두리 + 내부 여백 
+            이와 같은 방식으로 박스 크기가 결정되는 박스를 content-box라고 함
+            box-sizing 속성으로 박스의 종류를 결정할 수 있음
+            디폴트
+        */
+            width: 100px;
+            height: 100px;
+            border : 1px solid black;
+            padding: 10px;
+            box-sizing: content-box; /* 박스크기(122px) = content(100px) + padding(20px)+border(2px) */
+        }
+    </style>
+        <div class="box8">BOX8</div>
+
+        <hr>
+
+        <style>
+            .box9{
+        /* 
+            박스 크기 = 너비 / 높이
+            이와 같은 방식으로 박스 크기가 결정되는 박스를 border-box라고 함
+            box-sizing 속성으로 박스의 종류를 결정할 수 있음 가장 널리 사용됨 
+        */
+            width: 100px;
+            height: 100px;
+            border : 1px solid black;
+            padding: 10px;
+            box-sizing: border-box; /* 박스 크기 100px = content(78px)+padding(20) + border(2px)*/
+            }
+        </style>
+<div class="box9">BOX9</div>
+
+<hr>
+    <style>
+        .box10 { 
+                width : 100px;
+                height : 100px;
+                border : 1px solid black;
+            /* 바깥 여백 */
+            margin : 10px;
+            margin : 10px 0;
+            margin : 10px 0 10px;
+            margin: 5px 10px 15px 20px;
+            /* 박스를 화면 가운데 배치하기 */
+            margin: 0px auto;
+        }
+    </style>    
+<hr>
+    <div class="box10">BOX10</div>
+    <style>
+        .box11{
+            border: 1px solid black;
+            /* 세로 가운데 정렬 -1 : padding */
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    </style>
+    <div class="box11">BOX11 <br> box11</div>
+<hr>
+    <style>
+        .box12{
+            border: 1px solid black;
+            /* 세로 가운데 정렬 -2 line-height 텍스트가 2줄 이상이면 line-height가 적용안됨*/
+            height: 50px;
+            line-height: 50px;
+        }
+    </style>
+    <div class="box12">BOX12 <br> box12</div>
+</body>
+</html>
