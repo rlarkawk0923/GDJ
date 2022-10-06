@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- 1. GET 방식 요청 : <a> 태그 -->
+	
+	<div>
+		<a href="http://localhost:9090/01_Servlet/AnchorServlet">정상링크1</a>
+	</div>
+	<div>
+		<a href="/01_Servlet/AnchorServlet">정상링크2</a>
+	</div>
+	<div>
+		<a href="/AnchorServlet">불량링크3(슬래시로 시작하면 컨텍스트 패스로 인식)</a>
+	</div>
+	<div>
+		<a href="01_Servlet/AnchorServlet">링크4</a>  컨텍스트 패스는 슬래시로 시작해야 함, 없으면 매핑으로 인식
+	</div>
+	<div>
+		<a href="AnchorServlet">불량링크5</a> URL 매핑으로 인식되지만 HTML 문서의 경로에 따라 실행 여부가 다름(동일한 경로의 앵커서블릿 찾기 시도함->다른결과 출력 가능성)
+	</div>
+	
+	<!-- 연습 -->
+	<div>
+		<a href="/01_Servlet/AnchorServlet?a=1&b=2">더하기</a>
+	</div>
+	
+	<hr>
+	
+	<!-- 2. GET 방식 요청 : 자바스크립트 location-->
+	<div>
+		<button id="btn1">링크1</button>
+		<button id="btn2" data-name="박지원">링크2</button>
+	</div>
+	<script src="../js/jquery-3.6.1.min.js"></script>
+	<script>
+		$('#btn1').on('click', function(event){
+			//location.href = '/01_Servlet/LocationServlet';
+			open('/01_Servlet/LocationServlet'); // open(url, [name], [feature])
+		});
+		$('#btn2').click(function(event){
+			location.href = '/01_Servlet/LocationServlet?param=' + $(this).data('name');//1. event.target 2. this();
+		});
+	</script>
+</body>
+</html>
