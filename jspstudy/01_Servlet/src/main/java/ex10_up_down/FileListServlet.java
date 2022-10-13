@@ -1,5 +1,6 @@
-package ex05;
+package ex10_up_down;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -9,37 +10,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
-
-
-@WebServlet("/JSONServlet")
-public class JSONServlet extends HttpServlet {
-
+@WebServlet("/FileListServlet")
+public class FileListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// upload 디렉터리의 경로
+		String realPath = getServletContext().getRealPath("upload");
 		
-		// 요청
-		request.setCharacterEncoding("UTF-8");
-		
-		// 요청 파라미터
-		String name = request.getParameter("name");
-		String age = request.getParameter("age");
-		
-		// 응답할 JSON 객체 만들기
-		JSONObject obj = new JSONObject();
-		obj.put("name", name);
-		obj.put("age", age);
+		// upload 디렉터리에 저장된 파일 목록 가져오기
+		File dir = new File(realPath);
+		File[] files = dir.listFiles();
 		
 		// 응답
-		response.setContentType("application/json; charset=UTF-8");  // JSON 데이터의 MIME-TYPE
-		
+		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		out.println(obj.toString());  // 응답 데이터는 텍스트 처리된 JSON 객체
+		for(int i = 0; i < files.length; i++) {
+			out.println("<div><a href=\"/01_Servlet/DownloadServlet?filename="+ files[i].getName() +"\">" + files[i].getName()+ "</a></div>");
+			//http://localhost:9090/01_Servlet/DownloadServlet?filename=eiffeltower.jpg
+		}
 		out.close();
-		
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

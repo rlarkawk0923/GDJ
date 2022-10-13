@@ -1,11 +1,9 @@
-// 비밀번호 입력 없이 Sign Im 버튼 누르면
-// 경고창 띄우기 (비밀번호를 입력하세요.)
 
 document.getElementById('btn_signin').onclick = function(event){
     var pw = document.getElementById('pw');
     if(pw.value == ''){
         alert('비밀번호를 입력하세요.');
-        event.preventDefault(); // 기본동작 막기
+        event.preventDefault();
         return;
     }
 }
