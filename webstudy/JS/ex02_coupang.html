@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .member-wrapper {
+            margin: 0 auto;
+            min-width: 290px;
+            max-width: 460px;
+            padding: 0 4.35%;
+        }
+        .member-header {
+            width: 100%;
+            position: relative;
+        }
+        .member-logo {
+            width: 100%;
+            margin: 0 auto;
+            margin: 0 auto;
+            padding: 10.27% 0 0;
+        }
+        .member-logo-link {
+            display: block;
+            width: 43.83%;
+            max-width: 195px;
+            max-height: 46px;
+            padding-top: 10%;
+            margin: 0 auto;
+            background-image: url(https://static.coupangcdn.com/image/static/login/logo-coupang.x2.20201201.png);;
+            background-size: cover;
+        }
+        .member-main {
+            width:  100%;
+        }
+        .member-join {
+            width: 100%;
+        }
+        .section-title {
+            padding : 20px 0 10px 0;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 1.29;
+            color: #111;
+        }
+        .join-content {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .section-body{
+            width: 100%;
+        }
+        .member-field-wrap{
+            width: 100%;
+            margin-top: 2.9%;
+        }
+        .member-input-field{
+            width: 100%;
+        }
+        .member-input-wrap {
+            display: block;
+            height: 48px;
+            padding: 0;
+            border: 1px solid #CCC;
+            background-color: #FFF;
+        }
+        .member-input-group-icon-label{
+            position: relative;
+            float: left;
+            min-width: 44px;
+            height: 100%;
+            border-right: 1px solid #CCC;
+            background-color: #FAFAFA;
+
+        }
+        .join-sprite{
+            background-image: url("//img1a.coupangcdn.com/image/static/login/sprite-member.x1.20171115.png"),none;
+            background-repeat: no-repeat;
+            background-size: 86px 86px;
+        }
+        .join-sprite-email {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 16px;
+            margin: -8px 0 0 -10px;
+            padding-left: 19px;
+            background-position: -1px -1px ;
+        }
+        .member-input {
+        box-sizing: border-box;
+        width: 60%;
+        height: 48px;
+        margin: 0;
+        padding: 16px 0 12px;
+        font-size: 14px;
+        line-height: 20px;
+        text-indent: 12px;
+        border: none;
+        outline: none;
+    }
+    </style>
+</head>
+<body>
+    <div class="member-wrapper">
+        <header class="member-header">
+            <h1 class="member-logo">
+                <a href="http://www.coupang.com" class="member-logo-link"></a>
+            </h1>
+        </header>
+        <div class="member-main">
+            <div class="member-join">
+                <div class="section-title">
+                    회원정보를 입력해주세요
+                </div>
+                <div class="join-content">
+                    <div class="section-body">
+                        <div class="member-field-wrap">
+                            <div class="member-input-field">
+                                <label class="member-input-wrap" for="join-email-input">
+                                    <span class="member-input-group-icon-label">
+                                        <i class="join-sprite join-sprite-email"></i>
+                                        <span class="member-input-group"><!-- 입력상자 나오는 구역-->
+                                            <input type="email" id="join-email-input" class="member-input" maxlength="80" placeholder="아이디(이메일)">
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
