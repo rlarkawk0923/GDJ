@@ -17,7 +17,7 @@
 	// 문서는 모두 확인한 뒤 처리하는 window.onload 이벤트를 대신하는 jQuery 이벤트
 	
 $(document).ready(function(){
-		
+
 		$('#btn_write').click(function(event){
 			location.href = '${contextPath}/board/write.do';
 		});

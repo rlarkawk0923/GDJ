@@ -11,6 +11,11 @@
 <script>
 	$(document).ready(function(){
 		
+		$('#btn_edit').click(function(event){
+			location.href = '${contextPath}/board/edit.do?boardNo=${board.boardNo}';
+		});
+		
+		
 		$('#btn_remove').click(function(event){
 			if(confirm('게시글을 삭제할까요?')){
 				location.href = '${contextPath}/board/remove.do?boardNo=${board.boardNo}';

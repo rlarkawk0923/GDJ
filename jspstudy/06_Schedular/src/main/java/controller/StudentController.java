@@ -9,16 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.ActionForward;
-import service.BoardAddService;
-import service.BoardDetailService;
-import service.BoardEditService;
-import service.BoardListService;
-import service.BoardModifyService;
-import service.BoardRemoveService;
-import service.BoardService;
+import service.StudentAddService;
+import service.StudentFindService;
+import service.StudentListService;
+import service.StudentRemoveService;
+import service.StudentService;
 
 @WebServlet("*.do")
-public class BoardController extends HttpServlet {
+public class StudentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
@@ -33,53 +31,41 @@ public class BoardController extends HttpServlet {
 		String contextPath = request.getContextPath();
 		String urlMapping = requestURI.substring(contextPath.length());
 		
-		// BoardService 객체
-		BoardService service = null;
+		// StudentService 객체
+		StudentService service = null;
 		
 		// ActionForward 객체
 		ActionForward af= null;
 		
 		// 요청에 따른 Service 선택
-		switch(urlMapping){
+		switch(urlMapping) {
+		case "/student/list.do":
+			service = new StudentListService();
+			break;
+		case "/student/add.do":
+			service = new StudentAddService();
+			break;
+		case "/student/find.do":
+			service = new StudentFindService();
+			break;
+		case "/student/remove.do":
+			service = new StudentRemoveService();
+			break;
 		
-		// 비즈니스 로직
-		case "/board/list.do":
-			service = new BoardListService();
+		case "/student/write.do":
+			af= new ActionForward("/student/write.jsp", false);
 			break;
-		case "/board/detail.do":
-			service=new BoardDetailService();
-			break;
-		case "/board/add.do" :
-			service = new BoardAddService();
-			break;
-		case "/board/remove.do" :
-			service = new BoardRemoveService();
-			break;
-		case "/board/edit.do" :
-			service = new BoardEditService();
-			break;		
-		case "/board/modify.do" :
-			service = new BoardModifyService();
-			break;
-			
-		
-		// 단순이동(포워딩)
-		case "/board/write.do":
-			af = new ActionForward();
-			af.setView("/board/write.jsp");
-			af.setRedirect(false);// false=forward
-			break;
-			
-	
 	}
+
 		// 선택된 Service 실행
 		try {
 			if(service != null) {
-				af= service.execute(request, response);
+				af = service.execute(request, response);
 			}
-		}catch(Exception e) {
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
+		
 		
 		// 어디로 어떻게
 		if(af != null) {
