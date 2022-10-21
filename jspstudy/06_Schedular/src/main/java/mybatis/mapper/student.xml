@@ -48,7 +48,7 @@
 	<select id="selectStudentsByAveCount" parameterType="Map" resultType="int">
 		SELECT COUNT(*)
 		FROM STUDENT
-		WHERE AVE >= #{begin} AND AVE <![CDATA[<]]>= #{end}
+		WHERE AVE >= #{begin} AND AVE <![CDATA[<=]]> #{end}
 	</select>
 	
 	<!-- 7. 평균범위조회 : 평균-->
@@ -61,6 +61,32 @@
 	<delete id="deleteStudent" parameterType="int">
 		DELETE FROM STUDENT WHERE STU_NO = #{stuNo}
 	</delete>
+	
+	<!-- 9. 학생 상세보기 -->
+	<select id="selectStudentsByNO" parameterType="int" resultType="Student">
+	SELECT STU_NO, NAME, KOR, ENG, MATH, AVE, GRADE
+	FROM STUDENT
+	WHERE STU_NO = #{stuNo}
+	</select>
+	<!-- 10. 학생수정 -->
+	<update id="updateStudent" parameterType="Student">
+		UPDATE STUDENT
+		   SET NAME = #{name}, KOR = #{kor}, ENG = #{eng}, MATH = #{math}, AVE = #{ave}, GRADE = #{grade}
+		 WHERE STU_NO = #{stuNo}
+	</update>
+	
+	<!-- 11. 평균기준 상위 3명 -->
+	<select id="selectStudentsTop3" resultType="Student">
+		SELECT A.RANK, A.STU_NO, A.NAME, A.KOR, A.ENG, A.MATH, A.AVE, A.GRADE
+		FROM (SELECT RANK() OVER(ORDER BY AVE DESC) AS RANK, STU_NO, NAME, KOR, ENG, MATH, AVE, GRADE
+		FROM STUDENT) A
+		 WHERE A.RANK <![CDATA[<=]]> 3
+		<!--SELECT RANK() OVER(ORDER bY AVE DESC) AS RANK, STU, NAME, KOR, ENG, MATH, AVE, GRADE
+		FROM STUDENT
+		 WHERE RANK BETWEEN 1 AND 3 -->
+		
+	</select>
+	
 	
 
 </mapper>
