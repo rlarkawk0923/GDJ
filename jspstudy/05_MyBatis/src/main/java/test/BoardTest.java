@@ -34,7 +34,7 @@ public class BoardTest {
 	         
 	         // 목록의 개수가 5개이면 테스트 성공, 아니면 실패
 	         List<Board> boards=BoardDao.getInstance().selectAllBoards();
-	         assertEquals(2, boards.size());
+	         assertEquals(5, boards.size());
 	         
 	      
 	      
@@ -83,7 +83,7 @@ public class BoardTest {
 	         Board board=new Board();
 	         board.setTitle("테스트2");
 	         board.setContent("테스트 내용2");
-	         board.setBoardNo(3); // 게시글 삽입테스트 결과로 삽입된 게시글 번호
+	         board.setBoardNo(5); // 게시글 삽입테스트 결과로 삽입된 게시글 번호
 	         int result=BoardDao.getInstance().updateBoard(board);
 	         assertEquals(1, result);
 	         
@@ -94,7 +94,7 @@ public class BoardTest {
 	         
 	         // 삽입테스트로 삽입한 게시글 삭제
 	         
-	         int result=BoardDao.getInstance().deleteBoard(3);
+	         int result=BoardDao.getInstance().deleteBoard(5);
 	         assertEquals(1, result);
 	      }
 	      
