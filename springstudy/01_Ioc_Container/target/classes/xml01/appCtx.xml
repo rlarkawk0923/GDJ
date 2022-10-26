@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+		ㅎㅇ 난 Spring Bean Configuration File이야
+		난 Bean을 만드는 xml이야
+		내가 만든 Bean 은 컨테이너(Container)에 보관되지
+	 -->
+	 <!-- 
+	 	1. 디폴트 생성자 + setter(property 태그)
+
+	  -->
+	  <bean id="calc" class="com.gdu.app01.xml01.Calculator" ></bean>
+	  <bean id="haksaeng" class="com.gdu.app01.xml01.Student" >
+	  	<property name="name">
+	  		<value>홍길동</value>
+	  	</property>
+	  	<property name="school">
+	  		<value>가산대학교</value>
+	  	</property>
+	  	<property name="calculator">
+	  		<ref bean="calc"/> <!-- 홍길동이 가진 계산기 bean 아이디와 맞추기 참조타입 변수들은 다 ref태그 기본타입은 value 태그-->
+	  	</property>
+	  </bean>
+	 <!-- 
+	 	2. 생성자(Generate Constructor using Fields)
+	 	
+
+	  -->
+	 <!-- 
+	 	1. 디폴트 생성자 + setter
+
+	  -->
+</beans>
