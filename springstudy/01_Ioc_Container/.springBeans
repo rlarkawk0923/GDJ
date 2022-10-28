@@ -15,6 +15,7 @@
 		<config>src/main/resources/xml06/appCtx.xml</config>
 		<config>src/main/resources/xml07/appCtx.xml</config>
 		<config>src/main/resources/xml08/appCtx.xml</config>
+		<config>src/main/resources/java03/appCtx.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>

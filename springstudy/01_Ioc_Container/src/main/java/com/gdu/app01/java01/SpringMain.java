@@ -8,7 +8,7 @@ public class SpringMain {
 	public static void main(String[] args) {
 		
 		AbstractApplicationContext ctx = new AnnotationConfigApplicationContext(SpringBeanConfig.class);
-		
+
 		Singer s1 = ctx.getBean("singer1", Singer.class);
 		System.out.println(s1.getName());
 		System.out.println(s1.getSong().getTitle());
@@ -25,7 +25,7 @@ public class SpringMain {
 		System.out.println(s3.getSong().getGenre());
 		
 		ctx.close();
-
+		
 	}
 
 }
