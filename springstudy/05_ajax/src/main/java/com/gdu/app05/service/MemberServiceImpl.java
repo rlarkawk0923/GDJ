@@ -47,10 +47,5 @@ public class MemberServiceImpl implements MemberService {
 		map.put("pw", member.getPw());
 		return map;
 	}
-	
-	@Override
-	public Member execute4(Member member) {
-		return member;
-	}
 
 }
