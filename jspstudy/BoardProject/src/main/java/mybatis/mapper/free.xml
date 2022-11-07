@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+	<mapper namespace="mybatis.mapper.free">
+	
+
+	<select id="selectAllBoards" resultType="Free">
+		SELECT FREENO, TITLE, WRITER, HIT
+		FROM FREE
+		ORDER BY FREENO
+	</select>
+	
+	<insert id="insertBoard" parameterType="Free">
+		INSERT INTO FREE(FREENO, WRITER, TITLE, CONTENT, IP, HIT)
+		VALUES(STUDENT_SEQ.NEXTVAL, #{writer}, #{title}, #{content}, #{ip}, 5)
+	</insert>
+	
+	<select id="selectBoardsByNO" parameterType="int" resultType="Free">
+		SELECT FREENO, WRITER, IP, HIT, TITLE, CONTENT
+		FROM FREE
+		WHERE FREENO = #{freeNo}
+	</select>
+	
+
+	<delete id="deleteBoard" parameterType="Free">
+		DELETE FROM FREE WHERE FREENO = #{FREENO}
+	</delete>
+	
+	
+	
+	
+ 
+
+</mapper>
