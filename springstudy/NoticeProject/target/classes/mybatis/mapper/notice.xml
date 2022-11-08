@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gdu.notice.mapper.NoticeMapper">
+
+	<select id="selectAllNotices" resultType="NoticeDTO">
+		SELECT NOTICE_NO, TITLE, CONTENT, HIT, CREATE_DATE, MODIFY_DATE
+		FROM NOTICE
+		ORDER BY NOTICE_NO DESC
+	</select>
+	
+	<insert id="insertNotice" parameterType="NoticeDTO"><!-- 인서트 업데이트 딜리트는 리저트타입없음 -->
+	INSERT INTO NOTICE
+	(NOTICE_NO, TITLE, CONTENT, HIT, CREATE_DATE, MODIFY_DATE)
+	VALUES
+	(NOTICE_SEQ.NEXTVAL, #{title}, #{content}, 0, SYSTIMESTAMP, SYSTIMESTAMP)
+	</insert>
+	
+	
+	
+	
+
+</mapper>
