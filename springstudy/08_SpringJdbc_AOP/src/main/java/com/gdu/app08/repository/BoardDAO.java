@@ -38,47 +38,38 @@ public class BoardDAO {
 		String sql = "INSERT INTO BOARD(BOARD_NO, TITLE, CONTENT, WRITER, CREATE_DATE, MODIFY_DATE) "
 		           + "VALUES(BOARD_SEQ.NEXTVAL, ?, ?, ?, TO_CHAR(SYSDATE, 'YYYY-MM-DD'), TO_CHAR(SYSDATE, 'YYYY-MM-DD'))";
 		int result = jdbcTemplate.update(sql, new PreparedStatementSetter() {
-			
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
 				ps.setString(1, board.getTitle());
 				ps.setString(2, board.getContent());
 				ps.setString(3, board.getWriter());
-				
 			}
 		});
-		
 		return result;
 	}
 	
 	public int updateBoard(final BoardDTO board) {
-		 String sql = "UPDATE BOARD SET TITLE = ?, CONTENT = ?, MODIFY_DATE = TO_CHAR(SYSDATE, 'YYYY-MM-DD') WHERE BOARD_NO = ?";
-
+		String sql = "UPDATE BOARD SET TITLE = ?, CONTENT = ?, MODIFY_DATE = TO_CHAR(SYSDATE, 'YYYY-MM-DD') WHERE BOARD_NO = ?";
 		int result = jdbcTemplate.update(sql, new PreparedStatementSetter() {
-			
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
 				ps.setString(1, board.getTitle());
 				ps.setString(2, board.getContent());
 				ps.setInt(3, board.getBoard_no());
 			}
-		});
-		
+		});				
 		return result;
 	}
 	
 	public int deleteBoard(final int board_no) {
-		String sql = "delete from board where board_no =?";
+		String sql = "DELETE FROM BOARD WHERE BOARD_NO = ?";
 		int result = jdbcTemplate.update(sql, new PreparedStatementSetter() {
-			
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
 				ps.setInt(1, board_no);
-
-				
 			}
 		});
-		return 0;
+		return result;
 	}
 	
 }

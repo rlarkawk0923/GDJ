@@ -53,7 +53,7 @@ public class FreeDAO {
 	
 	public int selectBoardsByNO(int freeNo) {
 		SqlSession ss = factory.openSession();
-		Free board = ss.selectOne(mapper + "selectBoardsByNO", freeNo);
+		int board = ss.selectOne(mapper + "selectBoardsByNO", freeNo);
 		ss.close();
 		return board;
 	}

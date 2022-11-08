@@ -21,7 +21,7 @@ public class StudentListService implements StudentService {
 		// student/list.jsp로 포워딩
 		return new ActionForward("/student/list.jsp", false);
 		
-		//
+
 	}
 
 }
