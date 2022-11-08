@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="mybatis.mapper.free">
+
+	<select id="selectFreeList" resultType="domain.Free">
+		SELECT FREENO, WRITER, TITLE, CONTENT, IP, HIT
+		  FROM FREE
+		 ORDER BY FREENO
+	</select>
+	
+	<insert id="insertFree" parameterType="domain.Free">
+		INSERT INTO FREE
+			(FREENO, WRITER, TITLE, CONTENT, IP, HIT)
+		VALUES
+			(FREE_SEQ.NEXTVAL, #{writer}, #{title}, #{content}, #{ip}, 0)
+	</insert>
+	
+	<select id="selectFreeByFreeNo" parameterType="Long" resultType="domain.Free">
+		SELECT FREENO, WRITER, TITLE, CONTENT, IP, HIT
+		  FROM FREE
+		 WHERE FREENO = #{freeNo}
+	</select>
+	
+	<update id="updateFree" parameterType="domain.Free">
+		UPDATE FREE
+		   SET TITLE = #{title}, CONTENT = #{content}
+		 WHERE FREENO = #{freeNo}
+	</update>
+	
+	<delete id="deleteFree" parameterType="Long">
+		DELETE
+		  FROM FREE
+		 WHERE FREENO = #{freeNo}
+	</delete>
+	
+	<select id="selectMostView" resultType="domain.Free">
+		SELECT FREENO, WRITER, TITLE, CONTENT, IP, HIT
+		  FROM FREE
+		 WHERE HIT = (SELECT MAX(HIT)
+		                FROM FREE)
+	</select>
+
+</mapper>

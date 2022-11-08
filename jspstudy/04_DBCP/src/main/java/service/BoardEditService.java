@@ -14,6 +14,10 @@ public class BoardEditService implements BoardService {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+<<<<<<< HEAD
+=======
+		// 어떤 게시글을 수정할건지 번호가 넘어옴
+>>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 		// 요청 파라미터
 		Optional<String> opt = Optional.ofNullable(request.getParameter("board_no"));
 		int board_no = Integer.parseInt(opt.orElse("0"));
@@ -24,6 +28,7 @@ public class BoardEditService implements BoardService {
 		// 게시글 정보를 Jsp로 보내기 위해서 request에 저장
 		request.setAttribute("board", board);
 		
+<<<<<<< HEAD
 		// 어디로 / 어떻게
 		ActionForward af = new ActionForward();
 		af.setView("/board/edit.jsp");  // webapp/board/edit.jsp를 의미함
@@ -33,3 +38,13 @@ public class BoardEditService implements BoardService {
 	}
 
 }
+=======
+		// 어디로 어떻게
+		ActionForward af = new ActionForward(); 
+		af.setView("/board/edit.jsp"); // webapp/board.list.jsp를 의미함
+		af.setRedirect(false); // 포워드
+		return af;
+	}
+
+}
+>>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5

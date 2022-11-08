@@ -10,8 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.ActionForward;
 import service.StudentAddService;
+<<<<<<< HEAD
 import service.StudentFindService;
 import service.StudentListService;
+=======
+import service.StudentDetailService;
+import service.StudentFindService;
+import service.StudentListService;
+import service.StudentModifyService;
+>>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 import service.StudentRemoveService;
 import service.StudentService;
 
@@ -51,7 +58,16 @@ public class StudentController extends HttpServlet {
 		case "/student/remove.do":
 			service = new StudentRemoveService();
 			break;
+<<<<<<< HEAD
 		
+=======
+		case "/student/detail.do":
+			service = new StudentDetailService();
+			break;
+		case "/student/modify.do":
+			service = new StudentModifyService();
+			break;
+>>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 		case "/student/write.do":
 			af= new ActionForward("/student/write.jsp", false);
 			break;

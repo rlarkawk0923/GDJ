@@ -56,5 +56,19 @@
 	    <delete id="deleteBoard" parameterType="int">
 	    	DELETE FROM BOARD WHERE BOARD_NO = #{boardNo}
 	    </delete>
+<<<<<<< HEAD
+=======
+	    
+   <!--
+      5. 게시글 수정
+         1) parameterType : Board board
+         2) resultType    : 작성하면 안 됩니다. 자동으로 int로 처리된다.
+   -->
+   <update id="updateBoard" parameterType="Board">
+      UPDATE BOARD
+         SET TITLE = #{title}, CONTENT = #{content}
+       WHERE BOARD_NO = #{boardNo}
+   </update>
+>>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 
 </mapper>

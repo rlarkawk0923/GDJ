@@ -1,0 +1,28 @@
+package com.gdu.app01.xml04;
+
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+public class SpringMain {
+
+	public static void main(String[] args) {
+		
+		AbstractApplicationContext ctx = new GenericXmlApplicationContext("xml04/appCtx.xml");
+		//같은다오
+		Dao dao1 = ctx.getBean("dao", Dao.class);
+		Dao dao2 = ctx.getBean("dao", Dao.class);
+		Dao dao3 = ctx.getBean("dao", Dao.class);
+		// 각각 다른다오
+//		Dao dao1 = new Dao();
+//		Dao dao2 = new Dao();
+//		Dao dao3 = new Dao();
+//		
+		System.out.println(dao1 == dao2);
+		System.out.println(dao2 == dao3);
+		System.out.println(dao1 == dao3);
+		
+		ctx.close();
+		
+	}
+
+}
