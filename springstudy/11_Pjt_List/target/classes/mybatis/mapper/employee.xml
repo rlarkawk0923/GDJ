@@ -76,6 +76,12 @@
 		 WHERE B.RN BETWEEN #{begin} AND #{end}
 	</select>
 
+	<select id="selectAutoCompleteList" parameterType="Map" resultType="EmpDTO">
+		SELECT DISTINCT ${target}
+		  FROM EMPLOYEES
+		 WHERE ${target} LIKE CONCAT(#{param}, '%')
+	</select>
+
 </mapper>
 <!-- 	<select id="selectEmployeesByPage" resultMap="EmpMap"> 파라미터 타입 없이
 		SELECT B.*

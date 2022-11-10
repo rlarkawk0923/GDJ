@@ -36,7 +36,7 @@ public class NoticeController {
 	
 	@PostMapping("/ntc/add")
 	public void add(HttpServletRequest request, HttpServletResponse response) {
-		noticeService.addNotice(request, response); // 서비스가 응답 만들었기 때문에 리턴 필요없음 성공했을때 갈곳 실패했을때 갈곳 서비스에 리다이렉트도 됨
+		noticeService.addNotice(request, response); // 서비스가 응답(성공했을때 갈곳 실패했을때 갈곳 ) 만들었기 때문에 리턴 필요없음/ /서비스에 리다이렉트도 됨
 	}
 	
 }
