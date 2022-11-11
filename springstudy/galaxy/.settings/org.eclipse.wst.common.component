@@ -5,7 +5,7 @@
     
     
     
-    <wb-module deploy-name="app12-1.0.0-BUILD-SNAPSHOT">
+    <wb-module deploy-name="galaxy-1.0.0-BUILD-SNAPSHOT">
                                                         
         
         
@@ -34,7 +34,6 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
                                                 		
         
         
@@ -42,8 +41,7 @@
         
         
         <property name="java-output-path" value="target/classes"/>
-                
-        <property name="context-root" value="app12"/>
+        <property name="context-root" value="galaxy"/>
                                                 	
     
     

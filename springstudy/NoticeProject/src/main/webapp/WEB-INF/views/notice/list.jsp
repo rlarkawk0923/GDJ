@@ -7,6 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="${contextPath}/resources/js/jquery-3.6.1.min.js"></script>
+<style>
+	.notice:hover {
+	background-color: beige;
+}
+</style>
 </head>
 <body>
 	<div>
@@ -26,13 +32,19 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${notices}" var="n"><!-- 모델에 실어준 이름이 el로 사용됨 -->
-					<tr>
+					<tr class="notice" data-notice_no="${n.noticeNo}"><!--  -->
 						<td>${n.noticeNo}</td>
 						<td>${n.title}</td>
 						<td>${n.hit}</td>
 						<td>${n.createDate}</td>			
 					</tr>
 				</c:forEach>
+				<script>
+				// 행단위 선택
+					$('.notice').click(function(){
+						location.href='${contextPath}/ntc/detail?noticeNo=' + $(this).data('notice_no');//
+					});
+				</script>
 			</tbody>
 		</table>
 	</div>

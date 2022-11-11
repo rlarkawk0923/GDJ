@@ -8,21 +8,23 @@ import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import com.gdu.app12.domain.BbsDTO;
 import com.gdu.app12.mapper.BbsMapper;
 import com.gdu.app12.util.PageUtil;
+import com.gdu.app12.util.SecurityUtil;
 
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor // 생성자를 이용해서 자동주입하겠다		
-@Service //bean으로 등록하려고
+@AllArgsConstructor
+@Service
 public class BbsServiceImpl implements BbsService {
-	
-	//필드 한개일때 오토와이어드 추천, 여러개일때 생성자 이용해서 주입
+
 	private BbsMapper bbsMapper;
 	private PageUtil pageUtil;
+	private SecurityUtil securityUtil;
 	
 	@Override
 	public void findAllBbsList(HttpServletRequest request, Model model) {
@@ -60,8 +62,9 @@ public class BbsServiceImpl implements BbsService {
 	@Override
 	public int addBbs(HttpServletRequest request) {
 		
-		String writer = request.getParameter("writer");
-		String title = request.getParameter("title");
+		// 의도적인 시큐리티공격이 들어와도 막을 수 있음
+		String writer = securityUtil.sha256(request.getParameter("writer"));
+		String title = securityUtil.preventXss(request.getParameter("title"));
 		String ip = request.getRemoteAddr();
 		
 		BbsDTO bbs = new BbsDTO();
@@ -73,15 +76,53 @@ public class BbsServiceImpl implements BbsService {
 		
 	}
 
+	
+	/*
+		@Transactional
+		안녕. 난 트랜잭션을 처리하는 애너테이션이야.
+		INSERT/UPDATE/DELETE 중 2개 이상이 호출되는 서비스에 추가하면 되.
+	*/
+	@Transactional
 	@Override
 	public int addReply(HttpServletRequest request) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		// 작성자, 제목
+		String writer = securityUtil.sha256(request.getParameter("writer"));
+		String title = securityUtil.preventXss(request.getParameter("title"));
+		
+		// IP
+		String ip = request.getRemoteAddr();
+		
+		// 원글의 DEPTH, GROUP_NO, GROUP_ORDER
+		int depth = Integer.parseInt(request.getParameter("depth"));
+		int groupNo = Integer.parseInt(request.getParameter("groupNo"));
+		int groupOrder = Integer.parseInt(request.getParameter("groupOrder"));
+		
+		// 원글DTO(updatePreviousReply를 위함)
+		BbsDTO bbs = new BbsDTO();
+		bbs.setDepth(depth);
+		bbs.setGroupNo(groupNo);
+		bbs.setGroupOrder(groupOrder);
+		
+		// updatePreviousReply 쿼리 실행
+		bbsMapper.updatePreviousReply(bbs);
+		
+		// 답글DTO
+		BbsDTO reply = new BbsDTO();
+		reply.setWriter(writer);
+		reply.setTitle(title);
+		reply.setIp(ip);
+		reply.setDepth(depth + 1);            // 답글 depth : 원글 depth + 1
+		reply.setGroupNo(groupNo);            // 답글 groupNo : 원글 groupNo
+		reply.setGroupOrder(groupOrder + 1);  // 답글 groupOrder : 원글 groupOrder + 1
+		
+		// insertReply 쿼리 실행		
+		return bbsMapper.insertReply(reply);
+		
 	}
 
 	@Override
 	public int removeBbs(int bbsNo) {
-		
 		return bbsMapper.deleteBbs(bbsNo);
 	}
 

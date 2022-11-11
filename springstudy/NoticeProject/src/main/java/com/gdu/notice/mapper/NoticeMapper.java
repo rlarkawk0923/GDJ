@@ -14,5 +14,12 @@ public interface NoticeMapper {
 	public int insertNotice(NoticeDTO notice);
 	
 	
+	// 리저트값                       파라미터
+	public NoticeDTO selectNoticeByNo(int noticeNo); 
+	public int updateHit(int noticeNo); // 위 상세보기랑 같이 돌아갈
+	public int updateNotice(NoticeDTO notice);
+	public int deleteNotice(int noticeNo);
+	
+	
 	
 }

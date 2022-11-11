@@ -19,6 +19,37 @@
 	(NOTICE_SEQ.NEXTVAL, #{title}, #{content}, 0, SYSTIMESTAMP, SYSTIMESTAMP)
 	</insert>
 	
+	<select id="selectNoticeByNo" parameterType="int" resultType="NoticeDTO">
+		SELECT NOTICE_NO, TITLE, CONTENT, HIT, CREATE_DATE, MODIFY_DATE
+		FROM NOTICE
+		WHERE NOTICE_NO = #{noticeNo}
+	</select>
+	
+	<update id="updateHit" parameterType="int">
+		UPDATE NOTICE
+		SET HIT = HIT + 1
+		WHERE NOTICE_NO = #{noticeNo}
+	</update>
+	
+
+	
+
+	<update id="updateNotice" parameterType="NoticeDTO"> <!-- 업데이트니까 리저트없음 -->
+		UPDATE NOTICE
+			SET CONTENT=#{content}   <!--  if태그 넣으면 바로 , 오기 때문에 문법오류 그래서 where절에 1=1 같은 수행해도 의미없는거 넣기도함-->
+				<if test="title != ''">, TITLE=#{title}</if> <!-- 빈문자열들어오면 500오류나는거 막을수 있다 원래 제목 유지 -->
+		WHERE 1=1
+			<if test="noticeNo != ''"> AND NOTICE_NO = #{noticeNo}</if>
+	</update>
+	
+	<delete id="deleteNotice" parameterType="int"><!-- 공지는 공지의 특성상 db에 삭제된 데이터를 남기는게 좋다 -->
+		DELETE
+		FROM NOTICE
+		WHERE NOTICE_NO = #{noticeNo}
+	</delete>
+	
+	
+	
 	
 	
 	

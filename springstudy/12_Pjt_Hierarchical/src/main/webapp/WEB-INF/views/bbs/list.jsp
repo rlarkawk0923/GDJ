@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -26,6 +27,9 @@
 <style>
 	.lnk_remove {
 		cursor: pointer;
+	}
+	.blind {
+		display: none;
 	}
 </style>
 </head>
@@ -61,9 +65,34 @@
 						<tr>
 							<td>${beginNo - vs.index}</td>
 							<td>${bbs.writer}</td>
-							<td>${bbs.title}</td>
+							<td>
+								<!-- DEPTH에 따른 들여쓰기 -->
+								<c:forEach begin="1" end="${bbs.depth}" step="1">
+									&nbsp;&nbsp;
+								</c:forEach>
+								<!-- 답글은 [RE] 표시 -->
+								<c:if test="${bbs.depth > 0}">
+									[RE]
+								</c:if>
+								<!-- 제목 -->
+								${bbs.title}
+								<!-- 답글달기 버튼 -->
+								<%--
+									1단 답글로 운용하는 경우 아래와 같이 처리한다.
+									<c:if test="${bbs.depth == 0}">
+										<input type="button" value="답글" class="btn_reply_write">
+									</c:if>
+								--%>
+								<input type="button" value="답글" class="btn_reply_write">
+								<script>
+									$('.btn_reply_write').click(function(){
+										$('.reply_write_tr').addClass('blind');
+										$(this).parent().parent().next().removeClass('blind');
+									});
+								</script>
+							</td>
 							<td>${bbs.ip}</td>
-							<td>${bbs.createDate}</td>
+							<td><fmt:formatDate value="${bbs.createDate}" pattern="yy/MM/dd HH:mm:ss" /></td>
 							<td>
 								<form method="post" action="${contextPath}/bbs/remove">
 									<input type="hidden" name="bbsNo" value="${bbs.bbsNo}">
@@ -78,6 +107,18 @@
 								</script>
 							</td>
 						</tr>
+						<tr class="reply_write_tr blind">
+							<td colspan="6">
+								<form method="post" action="${contextPath}/bbs/reply/add">
+									<div><input type="text" name="writer" placeholder="작성자" required></div>
+									<div><input type="text" name="title" placeholder="제목" required></div>
+									<div><button>답글달기</button></div>
+									<input type="hidden" name="depth" value="${bbs.depth}">
+									<input type="hidden" name="groupNo" value="${bbs.groupNo}">
+									<input type="hidden" name="groupOrder" value="${bbs.groupOrder}">
+								</form>
+							</td>
+						<tr>
 					</c:if>
 					<c:if test="${bbs.state == 0}">
 						<tr>
