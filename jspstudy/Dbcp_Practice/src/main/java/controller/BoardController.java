@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.ActionForward;
 import service.BoardAddService;
-import service.BoardService;
 import service.BoardDetailService;
 import service.BoardEditService;
 import service.BoardListService;
 import service.BoardModifyService;
 import service.BoardRemoveService;
+import service.BoardService;
 
 @WebServlet("*.do")
 

@@ -13,9 +13,11 @@ public class BoardAddService implements BoardService {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		// 요청 파라미터
 		String title = request.getParameter("title");
 		String content =request.getParameter("content");
+		
 		
 		// DB로 보내기 위해 Board board 생성
 		Board board = new Board();

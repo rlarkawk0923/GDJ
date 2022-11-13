@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="gun" class="com.gdu.app01.java04.Gun">
+		<constructor-arg value="K-2"></constructor-arg>
+		<constructor-arg value="15"></constructor-arg>
+	</bean>
+	
+	<bean id="soldier" class="com.gdu.app01.java04.Soldier">
+	
+		<constructor-arg value="김상사"></constructor-arg>
+		<constructor-arg ref="gun"></constructor-arg>
+	</bean>
+	
+	<!--
+		SpringBeanConfig.java에 등록된 Bean을 appCtx.xml로 가져오기
+		1. Namespaces 탭에서 context 옵션을 체크한다.
+		2. appCtx.xml에 <context:annotation-config /> 태그를 추가한다.
+		3. SpringBeanConfig.java를 <bean> 태그로 등록한다.
+	-->
+
+	<context:annotation-config />
+	<bean class="com.gdu.app01.java03.SpringBeanConfig" />
+
+</beans>

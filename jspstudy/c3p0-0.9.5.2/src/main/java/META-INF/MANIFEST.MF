@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.9.3
+Created-By: 1.8.0_31-b13 (Oracle Corporation)
+Extension-Name: com.mchange.v2.c3p0
+Specification-Vendor: Machinery For Change, Inc.
+Specification-Version: 1.0
+Implementation-Vendor-Id: com.mchange
+Implementation-Vendor: Machinery For Change, Inc.
+Implementation-Version: 0.9.5.2
+Class-Path: mchange-commons-java-0.2.11.jar
+

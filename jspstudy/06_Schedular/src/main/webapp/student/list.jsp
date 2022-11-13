@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
+=======
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+>>>>>>> 5624a56bbdbc927aafb12dd3b1d6d79f8317432a
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +21,7 @@
 		$('#btn_add').click(function(event){
 			location.href = '${contextPath}/student/write.do';
 		});
+<<<<<<< HEAD
 		$('#btn_find').click(function(event){
 			var begin = $('#begin').val();
 			var end= $('#end').val();
@@ -23,32 +30,62 @@
 				return;
 			}
 			else if(end == '' || isNaN(end) ||end < 0|| end > 100){
+=======
+		
+		$('#btn_find').click(function(event){
+			var begin = $('#begin').val();
+			var end = $('#end').val();
+			if(begin == '' || isNaN(begin) || begin < 0 || begin > 100){
+				alert('begin값을 확인하세요.');
+				return;
+			}
+			else if(end == '' || isNaN(end) || end < 0 || end > 100){
+>>>>>>> 5624a56bbdbc927aafb12dd3b1d6d79f8317432a
 				alert('end값을 확인하세요.');
 				return;
 			}
 			location.href = '${contextPath}/student/find.do?begin=' + begin + '&end=' + end;
 		});
+<<<<<<< HEAD
 		$('#btn_list').click(function(event){
 			location.href = '${contextPath}/student/list.do';
 		});
 
+=======
+		
+		$('#btn_list').click(function(event){
+			location.href = '${contextPath}/student/list.do';
+		});
+>>>>>>> 5624a56bbdbc927aafb12dd3b1d6d79f8317432a
 		
 	});
 </script>
 <link rel="stylesheet" href="../assets/css/student.css">
 </head>
 <body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5624a56bbdbc927aafb12dd3b1d6d79f8317432a
 	<div class="wrap">
 		<h1 class="title">학생관리</h1>
 		<div class="btn_area">
 			<input type="button" value="신규학생등록" class="btn_primary btn_add" id="btn_add">
 		</div>
 		<div class="find_area">
+<<<<<<< HEAD
+=======
+			<span>평균</span>
+>>>>>>> 5624a56bbdbc927aafb12dd3b1d6d79f8317432a
 			<input type="text" name="begin" id="begin" size="4" placeholder="begin">
 			~
 			<input type="text" name="end" id="end" size="4" placeholder="end">
 			<input type="button" value="조회" class="btn_primary" id="btn_find">
+<<<<<<< HEAD
 			<input type="button" value="전체조회"  class="btn_primary btn_list" id="btn_list">
+=======
+			<input type="button" value="전체조회" class="btn_primary btn_list" id="btn_list">
+>>>>>>> 5624a56bbdbc927aafb12dd3b1d6d79f8317432a
 		</div>
 		<div class="main_area">
 			<table>
@@ -79,6 +116,7 @@
 								<td>${s.kor}</td>
 								<td>${s.eng}</td>
 								<td>${s.math}</td>
+<<<<<<< HEAD
 								<td><fmt:formatNumber value="${s.ave}" pattern="0.00"/></td>
 								<td>${s.grade}</td>
 								<td>
@@ -90,6 +128,22 @@
 												location.href= '${contextPath}/student/remove.do?stuNo=' + stuNo;
 											}
 										}	
+=======
+								<td><fmt:formatNumber value="${s.ave}" pattern="0.00" /></td>
+								<td>${s.grade}</td>
+								<td>
+									<input type="button" value="상세" class="btn_primary" onclick="fn_detail(${s.stuNo})">
+									<input type="button" value="삭제" class="btn_primary btn_remove" onclick="fn_remove(${s.stuNo})">
+									<script>
+										function fn_detail(stuNo){
+											location.href = '${contextPath}/student/detail.do?stuNo=' + stuNo;
+										}
+										function fn_remove(stuNo){
+											if(confirm('학생 정보를 삭제할까요?')){
+												location.href = '${contextPath}/student/remove.do?stuNo=' + stuNo;
+											}
+										}
+>>>>>>> 5624a56bbdbc927aafb12dd3b1d6d79f8317432a
 									</script>
 								</td>
 							</tr>
@@ -99,11 +153,21 @@
 				<tfoot>
 					<tr>
 						<td colspan="5">전체평균</td>
+<<<<<<< HEAD
 						<td><fmt:formatNumber value="${average}" pattern="0.00"/></td>
 					</tr>	
+=======
+						<td><fmt:formatNumber value="${average}" pattern="0.00" /></td>
+						<td colspan="2"></td>
+					</tr>
+>>>>>>> 5624a56bbdbc927aafb12dd3b1d6d79f8317432a
 				</tfoot>
 			</table>
 		</div>
 	</div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5624a56bbdbc927aafb12dd3b1d6d79f8317432a
 </body>
 </html>

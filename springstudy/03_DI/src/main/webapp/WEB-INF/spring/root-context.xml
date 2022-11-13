@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- Spring Container : bean을 만들어두는 곳(Spring Bean Configuration File) -->
+	<bean id="board1" class="com.gdu.app03.domain.Board">
+		<property name="boardNo" value="1"/>
+		<property name="title" value="공지1"/>
+		<property name="createDate" value="2022-10-31"/>
+	</bean>
+	<bean id="board2" class="com.gdu.app03.domain.Board">
+		<constructor-arg value="2"/>
+		<constructor-arg value="공지2"/>
+		<constructor-arg value="2022-11-01"/>
+	</bean>
+	<!-- 
+		@Inject 사용하기 위해서 Qualifier 직접 등록함 
+	<bean id="board1" class="com.gdu.app03.domain.Board">
+		<qualifier value="board1"/>
+		<property name="boardNo" value="1"/>
+		<property name="title" value="공지1"/>
+		<property name="createDate" value="2022-10-31"/>
+	</bean>
+	<bean id="board2" class="com.gdu.app03.domain.Board">
+		<qualifier value="board2"/>
+		<constructor-arg value="2"/>
+		<constructor-arg value="공지2"/>
+		<constructor-arg value="2022-11-01"/>
+	</bean>
+	-->
+</beans>
