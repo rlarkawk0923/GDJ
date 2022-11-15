@@ -410,7 +410,7 @@
 			
 			<!-- 주소 -->
 			<div>
-				<input type="text" name="postcode" id="postcode" placeholder="우편번호">
+				<input type="text" name="postcode" id="postcode" placeholder="우편번호" onclick="fn_execDaumPostcode()">
 				<input type="button" onclick="fn_execDaumPostcode()" value="우편번호 찾기"><br>
 				<input type="text" name="roadAddress" id="roadAddress" placeholder="도로명주소">
 				<input type="text" name="jibunAddress" id="jibunAddress" placeholder="지번주소"><br>
