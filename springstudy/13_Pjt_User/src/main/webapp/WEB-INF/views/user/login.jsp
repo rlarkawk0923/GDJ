@@ -22,12 +22,14 @@
 		
 		$('#frm_login').submit(function(event){
 			
+			// 아이디, 비밀번호 공백 검사
 			if($('#id').val() == '' || $('#pw').val() == ''){
-				alert('아이디와 패스워드를 모두 입력하세요.');
+				alert('아이디와 비밀번호를 모두 입력하세요.');
 				event.preventDefault();
 				return;
 			}
 			
+			// 아이디 기억을 체크하면 rememberId 쿠키에 입력된 아이디를 저장
 			if($('#rememberId').is(':checked')){
 				$.cookie('rememberId', $('#id').val());
 			} else {
@@ -39,6 +41,8 @@
 	}
 	
 	function fn_displayRememberId(){
+		
+		// rememberId 쿠키에 저장된 아이디를 가져와서 표시
 		
 		let rememberId = $.cookie('rememberId');
 		if(rememberId == ''){
@@ -61,6 +65,7 @@
 		
 		<form id="frm_login" action="${contextPath}/user/login" method="post">
 			
+			<!-- 컨트롤러에서 넘겨준 값 : 로그인 후 이동할 주소가 있음 -->
 			<input type="hidden" name="url" value="${url}">
 			
 			<div>
@@ -80,7 +85,7 @@
 			<div>
 				<label for="rememberId">
 					<input type="checkbox" id="rememberId">
-					아이디 저장
+					아이디 기억
 				</label>
 				<label for="keepLogin">
 					<input type="checkbox" name="keepLogin" id="keepLogin">
@@ -93,6 +98,12 @@
 		<div>
 			<a href="${contextPath}/user/findId">아이디 찾기</a> | 
 			<a href="${contextPath}/user/findPw">비밀번호 찾기</a>
+		</div>
+		
+		<hr>
+		
+		<div>
+			<a href="${apiURL}"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
 		</div>
 	
 	</div>

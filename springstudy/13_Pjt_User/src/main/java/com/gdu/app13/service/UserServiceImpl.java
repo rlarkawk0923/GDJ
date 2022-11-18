@@ -1,7 +1,15 @@
 package com.gdu.app13.service;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.security.SecureRandom;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +34,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gdu.app13.domain.RetireUserDTO;
+import com.gdu.app13.domain.SleepUserDTO;
 import com.gdu.app13.domain.UserDTO;
 import com.gdu.app13.mapper.UserMapper;
 import com.gdu.app13.util.SecurityUtil;
@@ -529,18 +538,206 @@ public class UserServiceImpl implements UserService {
 		
 	}
 	
+	@Transactional
+	@Override
+	public void sleepUserHandle() {
+		int insertCount = userMapper.insertSleepUser();
+		if(insertCount > 0) {
+			userMapper.deleteUserForSleep();
+		}
+	}
 	
+	@Override
+	public SleepUserDTO getSleepUserById(String id) {
+		return userMapper.selectSleepUserById(id);
+	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@Transactional
+	@Override
+	public void restoreUser(HttpServletRequest request, HttpServletResponse response) {
+		
+		// 계정 복원을 원하는 사용자의 아이디
+		HttpSession session = request.getSession();
+		SleepUserDTO sleepUser = (SleepUserDTO)session.getAttribute("sleepUser");
+		String id = sleepUser.getId();
+		
+		// 계정복구진행
+		int insertCount = userMapper.insertRestoreUser(id);
+		int deleteCount = 0;
+		if(insertCount > 0) {
+			deleteCount = userMapper.deleteSleepUser(id);
+		}
+		
+		// 응답
+		try {
 
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			
+			if(insertCount > 0 && deleteCount > 0) {
+				out.println("<script>");
+				out.println("alert('휴면 계정이 복구되었습니다. 휴면 계정 활성화를 위해 곧바로 로그인을 해 주세요.');");
+				out.println("location.href='" + request.getContextPath() + "/user/login/form';");
+				out.println("</script>");
+			} else {
+				out.println("<script>");
+				out.println("alert('휴면 계정이 복구되지 않았습니다.');");
+				out.println("history.back();");
+				out.println("</script>");
+			}
+			out.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	@Override
+	public String getNaverLoginApiURL(HttpServletRequest request) {
+	    
+		String apiURL = null;
+		
+		try {
+			
+			String clientId = "8FX9RTss9uUSzKTQbyMP";
+			String redirectURI = URLEncoder.encode("http://localhost:9090" + request.getContextPath() + "/user/naver/login", "UTF-8");  // 네이버 로그인 Callback URL에 작성한 주소 입력 
+			SecureRandom random = new SecureRandom();
+			String state = new BigInteger(130, random).toString();
+			
+			apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+			apiURL += "&client_id=" + clientId;
+			apiURL += "&redirect_uri=" + redirectURI;
+			apiURL += "&state=" + state;
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("state", state);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return apiURL;
+		
+	}
+	
+@Override
+	public UserDTO getNaverLoginTokenNProfile(HttpServletRequest request) {
+	 String clientId = "8FX9RTss9uUSzKTQbyMP";//애플리케이션 클라이언트 아이디값";
+	    String clientSecret = "dlK13osJsN";//애플리케이션 클라이언트 시크릿값";
+	    String code = request.getParameter("code");
+	       String state = request.getParameter("state");
+	       String redirectURI = null;
+	       
+	       try {
+	          redirectURI = URLEncoder.encode("http://localhost:9090" + request.getContextPath(), "UTF-8");
+	          
+	       } catch (UnsupportedEncodingException e) {
+	          e.printStackTrace();
+	       }
+	       
+	       
+	       String access_token = "";
+	       String refresh_token = "";
+	       
+	       StringBuffer res = new StringBuffer();  // StringBuffer는 Stringbuilder와 동일한 역할 수행
+	       
+	       try {
+	          
+	          String apiURL;
+	          apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
+	          apiURL += "client_id=" + clientId;
+	          apiURL += "&client_secret=" + clientSecret;
+	          apiURL += "&redirect_uri=" + redirectURI;
+	          apiURL += "&code=" + code;
+	          apiURL += "&state=" + state;
+	          
+	          URL url = new URL(apiURL);
+	          HttpURLConnection con = (HttpURLConnection)url.openConnection();
+	          con.setRequestMethod("GET");
+	          int responseCode = con.getResponseCode();
+	          BufferedReader br;
+	          if(responseCode==200) { // 정상 호출
+	             br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+	          } else {  // 에러 발생
+	             br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+	          }
+	          String inputLine;
+	          while ((inputLine = br.readLine()) != null) {
+	             res.append(inputLine);
+	          }
+	          br.close();
+	          con.disconnect();
+	          
+	          /*
+	             res.toString()
+	             
+	             {
+	             "access_token":"AAAAOOK1S65u2Ec7pkofnp625Z0YWCR6-zvgmujhI6z44fRMyRsxb173wxyHEkmIWu2LBKBYaG-UATlEHt6i6QcVBQg",
+	             "refresh_token":"QsI9S5zLZ3vJ2QIwXuBrf2XVipCP8Ht1HjObC3VTHxqZXRh0SO6Pb9dW4d4uX8BfYnyqlp2crzXXyAs15GVuRe2vXsipvip3O3qrw4tzDBXtV5f05xiiv5l4pYDQNzlbJV4f",
+	             "token_type":"bearer",
+	             "expires_in":"3600"
+	             }
+	             
+	          */
+	       } catch (Exception e) {
+	          e.printStackTrace();
+	       }
+	         JSONObject obj = new JSONObject(res.toString());
+	         access_token = obj.getString("access_token");
+	         refresh_token = obj.getString("refresh_token");
+	          
+	         // access_token을 이용해서 profile 받기
+	         String header = "Bearer " + access_token; // Bearer 다음에 공백 추가
+	          
+	         StringBuffer sb = new StringBuffer();
+	         
+	         try {
+	             
+	            String apiURL = "https://openapi.naver.com/v1/nid/me";
+	            URL url = new URL(apiURL);
+	          HttpURLConnection con = (HttpURLConnection)url.openConnection();
+	          con.setRequestMethod("GET");
+	          con.setRequestProperty("Authorization", header);
+	          int responseCode = con.getResponseCode();
+	          BufferedReader br;
+	          if(responseCode==200) { // 정상 호출
+	             br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+	          } else {  // 에러 발생
+	             br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+	          }
+	          String inputLine;
+	          while ((inputLine = br.readLine()) != null) {
+	             sb.append(inputLine);
+	          }
+	          br.close();
+	          con.disconnect();
+	          
+	          System.out.println(sb.toString());  // 사용자의 프로필 정보
+	          /*
+	             {
+	             "resultcode":"00",
+	             "message":"success",
+	             "response": {
+	                "id":"CIhpgrrwZq6wnrNwV_vVZOkVRE9ugu4nZLvHzSReVk4",
+	                "gender":"M",
+	                "email":"mifft080@naver.com",
+	                "mobile":"010-2315-6648",
+	                "mobile_e164":"+821023156648",
+	                "name":"\uc784\uc7a5\uc6b1",
+	                "birthday":"07-14",
+	                "birthyear":"1990"
+	                }
+	             }
+	          */
+	          
+	          
+	         } catch (Exception e) {
+	            e.printStackTrace();
+	         }
+	         
+	          
+	       
+	      return null;
+	   }
 }

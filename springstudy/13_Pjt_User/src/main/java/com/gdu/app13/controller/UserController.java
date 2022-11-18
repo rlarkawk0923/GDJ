@@ -77,12 +77,21 @@ public class UserController {
       // 요청 헤더 referer : 이전 페이지의 주소가 저장돼 있음(요청헤더에는 그 직전에 주소가 뭔지 referer라는 값으로 저장을 해둠.)
       // referer를 참조함으로써 현재 있는 페이지가 직전에 어떤 페이지에서 요청되어 있는지 알 수 있다(방문자가 어떤 웹사이트나 웹서버에서 왔는지 파악 가능)
       model.addAttribute("url", request.getHeader("referer")); // 로그인 후 되돌아 갈 주소 url를 login.jsp에서 써먹기 위해!
+      
+	// 네이버 로그인
+	model.addAttribute("apiURL", userService.getNaverLoginApiURL(request));
       return "user/login";
    }
    
+
    @PostMapping("/user/login")   // 간혹 로그인창 페이지와 로그인하고나서 페이지의 매핑방식을 맞춰야되는 경우도 있을 수 있다.
    public void login(HttpServletRequest request, HttpServletResponse response) {
       userService.login(request, response);
+   }
+   
+   @GetMapping("/user/naver/login")
+   public void naverLogin(HttpServletRequest request) {
+	   userService.getNaverLoginTokenNProfile(request);
    }
    
    @GetMapping("/user/logout")  // 로그아웃 후 웰컴페이지로 이동(redirect)
@@ -120,9 +129,20 @@ public class UserController {
       return "user/mypage";
    }
    
-   @PostMapping("/user/modify/pw")
-   public void requiredLogin_modify(HttpServletRequest request, HttpServletResponse response) {  
-   
-      userService.modifyPassword(request, response);
-   }
+	@PostMapping("/user/modify/pw")
+	public void requiredLogin_modifyPw(HttpServletRequest request, HttpServletResponse response) {
+		userService.modifyPassword(request, response);
+	}
+	
+	@GetMapping("/user/sleep/display")
+	public String sleepDisplay() {
+		return "user/sleep";
+	}
+	@PostMapping("/user/restore")
+	public void restore(HttpServletRequest request, HttpServletResponse response) {
+		userService.restoreUser(request, response);
+	}
+	
+	
+	
 }
