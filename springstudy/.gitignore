@@ -1,1 +1,4 @@
 /.metadata/
+
+# 프로퍼티 파일
+*.properties
