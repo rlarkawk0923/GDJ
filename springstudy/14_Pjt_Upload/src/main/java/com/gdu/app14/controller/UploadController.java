@@ -3,10 +3,15 @@ package com.gdu.app14.controller;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.gdu.app14.service.UploadService;
@@ -37,4 +42,22 @@ public class UploadController {
 	public void add(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) {
 		uploadService.save(multipartRequest, response);
 	}
-}
+	
+	@GetMapping("/upload/detail")
+	public String detail(@RequestParam(value="uploadNo", required = false, defaultValue = "0")int uploadNo, Model model) { // 번호받을때는 requestParam이 편함
+		uploadService.getUploadByNo(uploadNo, model);
+		return "upload/detail";
+	}
+	
+	@ResponseBody
+	@GetMapping("/upload/download")
+	public ResponseEntity<Resource> download(@RequestHeader("User-Agent") String userAgent, @RequestParam("attachNo") int attachNo){ // @requestParam 생략가능
+		return uploadService.download(userAgent, attachNo);
+	}
+	
+	@GetMapping("/upload/attach/remove")
+	public String attachRemove(@RequestParam("attachNo") int attachNo, @RequestParam("uploadNo") int uploadNo) {
+		uploadService.removeAttachByAttachNo(attachNo);
+		return "redirect:/upload/detail?uploadNo=" + uploadNo;
+	}
+	}
