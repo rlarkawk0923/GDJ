@@ -16,5 +16,8 @@ public interface UploadMapper {
 	public List<AttachDTO> selectAttachList(int uploadNo);
 	public int updateDownloadCnt(int attachNo);
 	public AttachDTO selectAttachByNo(int attachNo);
-	public int deleteAttachByAttachNo(int attachNo);
+	public int updateUpload(UploadDTO upload);
+	public int deleteAttach(int attachNo);
+	public int deleteUpload(int uploadNo);
+	public List<AttachDTO> selectAttachListInYesterday();
 }
