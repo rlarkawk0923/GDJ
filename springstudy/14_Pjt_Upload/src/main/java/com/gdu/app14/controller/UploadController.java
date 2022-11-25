@@ -1,27 +1,39 @@
 package com.gdu.app14.controller;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 =======
+=======
+>>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
+<<<<<<< HEAD
 >>>>>>> b5c256ee0d2db4290b9c7253b62aa7d62dbb3fab
+=======
+>>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 >>>>>>> b5c256ee0d2db4290b9c7253b62aa7d62dbb3fab
+=======
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+>>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.gdu.app14.service.UploadService;
@@ -38,20 +50,28 @@ public class UploadController {
 	}
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	@GetMapping("upload/list")
 =======
 	@GetMapping("/upload/list")
 >>>>>>> b5c256ee0d2db4290b9c7253b62aa7d62dbb3fab
+=======
+	@GetMapping("/upload/list")
+>>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
 	public String list(Model model) {
 		model.addAttribute("uploadList", uploadService.getUploadList());
 		return "upload/list";
 	}
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	@GetMapping("upload/write")
 =======
 	@GetMapping("/upload/write")
 >>>>>>> b5c256ee0d2db4290b9c7253b62aa7d62dbb3fab
+=======
+	@GetMapping("/upload/write")
+>>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
 	public String write() {
 		return "upload/write";
 	}
@@ -61,8 +81,11 @@ public class UploadController {
 		uploadService.save(multipartRequest, response);
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
+=======
+>>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
 	
 	@GetMapping("/upload/detail")
 	public String detail(@RequestParam(value="uploadNo", required=false, defaultValue="0") int uploadNo, Model model) {
@@ -104,5 +127,9 @@ public class UploadController {
 		uploadService.removeUpload(request, response);
 	}
 	
+<<<<<<< HEAD
 }
 >>>>>>> b5c256ee0d2db4290b9c7253b62aa7d62dbb3fab
+=======
+}
+>>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
 <<<<<<< HEAD
+<<<<<<< HEAD
         	
     
     <wb-module deploy-name="staff-1.0.0-BUILD-SNAPSHOT">
@@ -27,6 +28,8 @@
         
 
 =======
+=======
+>>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
     	
     <wb-module deploy-name="staff-1.0.0-BUILD-SNAPSHOT">
                 
@@ -45,5 +48,8 @@
         	
     </wb-module>
     
+<<<<<<< HEAD
 >>>>>>> b5c256ee0d2db4290b9c7253b62aa7d62dbb3fab
+=======
+>>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
 </project-modules>

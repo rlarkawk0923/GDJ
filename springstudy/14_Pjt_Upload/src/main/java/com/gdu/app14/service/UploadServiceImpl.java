@@ -3,6 +3,7 @@ package com.gdu.app14.service;
 import java.io.File;
 import java.io.PrintWriter;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 =======
+=======
+>>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
 import java.net.URLEncoder;
 import java.util.List;
 
@@ -26,7 +29,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+<<<<<<< HEAD
 >>>>>>> b5c256ee0d2db4290b9c7253b62aa7d62dbb3fab
+=======
+>>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -150,9 +156,12 @@ public class UploadServiceImpl implements UploadService {
 	}
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 }
 =======
+=======
+>>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
 	@Override// 셀렉트는 트랜잭션하는거 아님~
 	public void getUploadByNo(int uploadNo, Model model) {
 		
@@ -396,5 +405,9 @@ public class UploadServiceImpl implements UploadService {
 		}
 		
 	}
+<<<<<<< HEAD
 }
 >>>>>>> b5c256ee0d2db4290b9c7253b62aa7d62dbb3fab
+=======
+}
+>>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
