@@ -2,6 +2,7 @@ package com.gdu.app14.service;
 
 import java.io.File;
 import java.io.PrintWriter;
+<<<<<<< HEAD
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +10,23 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+=======
+import java.net.URLEncoder;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
+>>>>>>> b5c256ee0d2db4290b9c7253b62aa7d62dbb3fab
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -131,5 +149,252 @@ public class UploadServiceImpl implements UploadService {
 		
 	}
 	
+<<<<<<< HEAD
 	
 }
+=======
+	@Override// 셀렉트는 트랜잭션하는거 아님~
+	public void getUploadByNo(int uploadNo, Model model) {
+		
+		model.addAttribute("upload", uploadMapper.selectUploadByNo(uploadNo));
+		model.addAttribute("attachList", uploadMapper.selectAttachList(uploadNo));
+		
+		
+	}
+	
+	@Override
+	public ResponseEntity<Resource> download(String userAgent, int attachNo) { //responseEntity 페이지x, 값만 반환
+		
+		// 다운로드 할 첨부 파일의 정보(경로, 이름)
+		AttachDTO attach = uploadMapper.selectAttachByNo(attachNo);
+		File file = new File(attach.getPath(), attach.getFilesystem());
+		
+		// 반환할 Resource
+		Resource resource = new FileSystemResource(file);
+		
+		// Resource가 없으면 종료(다운로드할 파일이 없음)
+		if(resource.exists() == false) {
+			return new ResponseEntity<Resource>(HttpStatus.NOT_FOUND);
+		}
+		
+		// 다운로드 횟수 증가
+		uploadMapper.updateDownloadCnt(attachNo);
+		
+		// 다운로드 되는 파일명(브라우저 마다 다르게 세팅)
+		String origin = attach.getOrigin();
+		try {
+			
+			// IE (userAgent에 "Trident"가 포함되어 있음
+			if(userAgent.contains("Trident")) {
+				origin = URLEncoder.encode(origin, "UTF-8").replaceAll("\\+", " ");
+			}
+			// Edge (userAgent에 "Edg"가 포함되어있음
+			else if(userAgent.contains("Edg")) {
+				origin = URLEncoder.encode(origin,"UTF-8");
+		}
+		else {
+			origin = new String(origin.getBytes("UTF-8"), "ISO-8859-1");
+		}
+	
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
+		// 다운로드 헤더 만들기
+		HttpHeaders header = new HttpHeaders();
+		header.add("Content-Disposition", "attachment; filename=" + origin);
+		header.add("Content-Length", file.length() + "");
+		
+		return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
+	}
+	
+	@Override
+	public void removeAttachByAttachNo(int attachNo) {
+		
+		// 삭제할 Attach 정보 가져오기
+		AttachDTO attach = uploadMapper.selectAttachByNo(attachNo);
+		
+		// DB에서 Attach 정보 삭제
+		int result = uploadMapper.deleteAttach(attachNo);
+		
+		// 첨부 파일 삭제
+		if(result > 0) {
+			
+			// 첨부 파일을 File 객체로 만듬
+			File file = new File(attach.getPath(), attach.getFilesystem());
+			
+			// 삭제
+			if(file.exists()) {
+				file.delete();
+			}
+			
+		}
+		
+	}
+	
+	@Override
+	public void removeUpload(HttpServletRequest multipartRequest, HttpServletResponse response) {
+		
+		// 파라미터
+		int uploadNo = Integer.parseInt(multipartRequest.getParameter("uploadNo"));
+		
+		// 삭제할 Upload에 첨부된 첨부파일 목록 가져오기
+		List<AttachDTO> attachList = uploadMapper.selectAttachList(uploadNo);
+		
+		// DB에서 Upload 정보 삭제
+		int result = uploadMapper.deleteUpload(uploadNo);
+		
+		// 첨부 파일 삭제
+		if(result > 0) {
+			if(attachList != null && attachList.isEmpty() == false) {
+				// 순회하면서 하나씩 삭제
+				for(AttachDTO attach : attachList) {
+					// 삭제할 첨부 파일의 File 객체 생성
+					File file = new File(attach.getPath(), attach.getFilesystem());
+					// 삭제
+					if(file.exists()) {
+						file.delete();
+					}
+				}
+			}
+		}
+		
+		// 응답
+		try {
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			
+			if(result > 0) {
+				out.println("<script>");
+				out.println("alert('삭제 되었습니다.');");
+				out.println("location.href='" + multipartRequest.getContextPath() + "/upload/list'");
+				out.println("</script>");
+			} else {
+				out.println("<script>");
+				out.println("alert('삭제 실패했습니다.');");
+				out.println("history.back();");
+				out.println("</script>");
+			}
+			out.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public ResponseEntity<Resource> downloadAll(String userAgent, int uploadNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Transactional
+	@Override
+	public void modifyUpload(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) {
+		
+		/*  UPLOAD 테이블 수정하기 */
+		
+		// 파라미터
+		int uploadNo = Integer.parseInt(multipartRequest.getParameter("uploadNo"));
+		String title = multipartRequest.getParameter("title");
+		String content = multipartRequest.getParameter("content");
+		
+		// DB로 보낼 UploadDTO
+		UploadDTO upload = UploadDTO.builder()
+				.uploadNo(uploadNo)
+				.title(title)
+				.content(content)
+				.build();
+		
+		// DB 수정
+		int uploadResult = uploadMapper.updateUpload(upload);
+		
+		/* ATTACH 테이블에 저장하기 */
+		
+		// 추가하려는 첨부 파일 목록
+		List<MultipartFile> files = multipartRequest.getFiles("files");  // <input type="file" name="files">
+
+		// 첨부 결과
+		int attachResult;
+		if(files.get(0).getSize() == 0) {  // 첨부가 없는 경우 (files 리스트에 [MultipartFile[field="files", filename=, contentType=application/octet-stream, size=0]] 이렇게 저장되어 있어서 files.size()가 1이다.
+			attachResult = 1;
+		} else {
+			attachResult = 0;
+		}
+		
+		// 첨부된 파일 목록 순회(하나씩 저장)
+		for(MultipartFile multipartFile : files) {
+			
+			try {
+				
+				// 첨부가 있는지 점검
+				if(multipartFile != null && multipartFile.isEmpty() == false) {  // 둘 다 필요함
+					
+					// 원래 이름
+					String origin = multipartFile.getOriginalFilename();
+					origin = origin.substring(origin.lastIndexOf("\\") + 1);  // IE는 origin에 전체 경로가 붙어서 파일명만 사용해야 함
+					
+					// 저장할 이름
+					String filesystem = myFileUtil.getFilename(origin);
+					
+					// 저장할 경로
+					String path = myFileUtil.getTodayPath();
+					
+					// 저장할 경로 만들기
+					File dir = new File(path);
+					if(dir.exists() == false) {
+						dir.mkdirs();
+					}
+					
+					// 첨부할 File 객체
+					File file = new File(dir, filesystem);
+					
+					// 첨부파일 서버에 저장(업로드 진행)
+					multipartFile.transferTo(file);
+					
+					// AttachDTO 생성
+					AttachDTO attach = AttachDTO.builder()
+							.path(path)
+							.origin(origin)
+							.filesystem(filesystem)
+							.uploadNo(uploadNo)
+							.build();
+					
+					// DB에 AttachDTO 저장
+					attachResult += uploadMapper.insertAttach(attach);
+					
+				}
+				
+			} catch(Exception e) {
+				
+			}
+			
+		}  // for
+		
+		// 응답
+		try {
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			
+			if(uploadResult > 0 && attachResult == files.size()) {
+				out.println("<script>");
+				out.println("alert('수정 되었습니다.');");
+				out.println("location.href='" + multipartRequest.getContextPath() + "/upload/detail?uploadNo=" + uploadNo + "'");
+				out.println("</script>");
+			} else {
+				out.println("<script>");
+				out.println("alert('수정 실패했습니다.');");
+				out.println("history.back();");
+				out.println("</script>");
+			}
+			out.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+}
+>>>>>>> b5c256ee0d2db4290b9c7253b62aa7d62dbb3fab

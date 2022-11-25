@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: rlark
+=======
+Built-By: GDJ54
+>>>>>>> b5c256ee0d2db4290b9c7253b62aa7d62dbb3fab
 Build-Jdk: 11.0.13
 Created-By: Maven Integration for Eclipse
 
