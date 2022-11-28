@@ -11,13 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import common.ActionForward;
 import service.BoardAddService;
 import service.BoardDetailService;
-<<<<<<< HEAD
-import service.BoardListService;
-=======
 import service.BoardEditService;
 import service.BoardListService;
 import service.BoardModifyService;
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 import service.BoardRemoveService;
 import service.BoardService;
 
@@ -59,8 +55,6 @@ public class BoardController extends HttpServlet {
 		case "/board/remove.do" :
 			service = new BoardRemoveService();
 			break;
-<<<<<<< HEAD
-=======
 		case "/board/edit.do" :
 			service = new BoardEditService();
 			break;		
@@ -68,7 +62,6 @@ public class BoardController extends HttpServlet {
 			service = new BoardModifyService();
 			break;
 			
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 		
 		// 단순이동(포워딩)
 		case "/board/write.do":

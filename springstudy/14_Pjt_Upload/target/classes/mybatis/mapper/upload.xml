@@ -12,22 +12,6 @@
 	</select>
 	
 	<!--
-<<<<<<< HEAD
-<<<<<<< HEAD
-		 UPLOAD_SEQ.NEXTVAL 값을 INSERT 수행 이전에(order="BEFORE")
-		parameter로 전달되는 UploadDTO의 uploadNo에 넣어 주시오.
-	 -->
-	
-	<insert id="insertUpload" parameterType="UploadDTO">
-		<selectKey keyProperty="uploadNo" resultType="int" order="BEFORE">
-			SELECT UPLOAD_SEQ.NEXTVAL
-			FROM DUAL
-		</selectKey>
-		INSERT INTO UPLOAD
-		(UPLOAD_NO, TITLE, CONTENT, CREATE_DATE, MODIFY_DATE)
-=======
-=======
->>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
 		UPLOAD_SEQ.NEXTVAL 값을 INSERT 수행 이전에(BEFORE)
 		parameter로 전달되는 UploadDTO의 uploadNo에 넣어 주시오.
 	-->
@@ -38,10 +22,6 @@
 		</selectKey>
 		INSERT INTO UPLOAD
 			(UPLOAD_NO, TITLE, CONTENT, CREATE_DATE, MODIFY_DATE)
-<<<<<<< HEAD
->>>>>>> b5c256ee0d2db4290b9c7253b62aa7d62dbb3fab
-=======
->>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
 		VALUES
 			(#{uploadNo}, #{title}, #{content}, SYSTIMESTAMP, SYSTIMESTAMP)
 	</insert>
@@ -53,11 +33,6 @@
 			(ATTACH_SEQ.NEXTVAL, #{path}, #{origin}, #{filesystem}, 0, #{uploadNo})
 	</insert>
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
 	<select id="selectUploadByNo" parameterType="int" resultType="UploadDTO">
 		SELECT UPLOAD_NO, TITLE, CONTENT, CREATE_DATE, MODIFY_DATE
 		  FROM UPLOAD
@@ -108,8 +83,4 @@
 		 WHERE PATH = CONCAT('storage\\', TO_CHAR(SYSDATE - 1, 'yyyy\\mm\\dd'))
 	</select>
 	
-<<<<<<< HEAD
->>>>>>> b5c256ee0d2db4290b9c7253b62aa7d62dbb3fab
-=======
->>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
 </mapper>

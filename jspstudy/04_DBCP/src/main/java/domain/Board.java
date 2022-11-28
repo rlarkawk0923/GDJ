@@ -15,19 +15,12 @@ import lombok.ToString;
 @Setter
 @Builder
 @ToString
-<<<<<<< HEAD
-=======
 
 
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 public class Board {
 	private int board_no;
 	private String title;
 	private String content;
 	private Date create_date;
-<<<<<<< HEAD
-}
-=======
 
 }
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5

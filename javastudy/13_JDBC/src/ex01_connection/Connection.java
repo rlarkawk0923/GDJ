@@ -12,9 +12,8 @@ public class Connection {
 		// 2.oracle.jdbc.driver.OracleDriver
 
 		try {
-			//
 			Class.forName("oracle.jdbc.OracleDriver");// ""안에 들어간 클래스가 없을때 발생하는 예외 처리가 필요함
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			// Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
 			System.out.println("OracleDriver 로드 실패");
 		}
@@ -23,7 +22,7 @@ public class Connection {
 		try {
 
 			String url = "jdbc:oracle:thin:@localhost:1521:xe"; // DB마다 url은 달라짐(Oracle XE 버전 기준)
-			String user = "SCOTT"; // 대문자 소문자 구분 없음
+			String user = "scott"; // 대문자 소문자 구분 없음
 			String password = "TIGER"; // 대소문자 구분함 계정 만들 때 사용한 대소문자 지켜야함
 			con = DriverManager.getConnection(url, user, password);
 			System.out.println("DB접속 성공");

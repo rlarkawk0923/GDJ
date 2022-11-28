@@ -1,27 +1,19 @@
 package service;
 
-<<<<<<< HEAD
-=======
 import java.io.PrintWriter;
 
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import common.ActionForward;
-<<<<<<< HEAD
-=======
 import domain.Student;
 import repository.StudentDao;
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 
 public class StudentModifyService implements StudentService {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-<<<<<<< HEAD
-=======
 		
 		// 요청 파라미터
 		int stuNo = Integer.parseInt(request.getParameter("stuNo"));
@@ -71,7 +63,6 @@ public class StudentModifyService implements StudentService {
 				}
 				out.close();
 		
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 		return null;
 	}
 

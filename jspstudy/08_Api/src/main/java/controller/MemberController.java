@@ -1,10 +1,7 @@
 package controller;
 
 import java.io.IOException;
-<<<<<<< HEAD
-=======
 import java.io.PrintWriter;
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -48,11 +45,8 @@ public class MemberController extends HttpServlet {
 			Map<String, String> map = service.getCaptchaImage(request, key);
 			request.setAttribute("dirname", map.get("dirname"));
 			request.setAttribute("filename", map.get("filename"));
-<<<<<<< HEAD
-=======
 			request.setAttribute("key", map.get("key"));
 			
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 			//ActionForward 생성
 			af = new ActionForward("/member/login.jsp", false);
 			break;
@@ -60,8 +54,6 @@ public class MemberController extends HttpServlet {
 			service.refreshCaptcha(request, response);
 			break;
 			//System.out.println(key);
-<<<<<<< HEAD
-=======
 		case "/member/validateCaptcha.do":
 			boolean result = service.validateUserInput(request);
 			if(result) {
@@ -74,7 +66,6 @@ public class MemberController extends HttpServlet {
 				out.println("</script>");
 				out.close();
 			}
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 
 	}
 		

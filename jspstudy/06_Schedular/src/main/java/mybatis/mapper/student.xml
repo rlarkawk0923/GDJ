@@ -48,11 +48,7 @@
 	<select id="selectStudentsByAveCount" parameterType="Map" resultType="int">
 		SELECT COUNT(*)
 		FROM STUDENT
-<<<<<<< HEAD
-		WHERE AVE >= #{begin} AND AVE <![CDATA[<]]>= #{end}
-=======
 		WHERE AVE >= #{begin} AND AVE <![CDATA[<=]]> #{end}
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 	</select>
 	
 	<!-- 7. 평균범위조회 : 평균-->
@@ -66,8 +62,6 @@
 		DELETE FROM STUDENT WHERE STU_NO = #{stuNo}
 	</delete>
 	
-<<<<<<< HEAD
-=======
 	<!-- 9. 학생 상세보기 -->
 	<select id="selectStudentsByNO" parameterType="int" resultType="Student">
 	SELECT STU_NO, NAME, KOR, ENG, MATH, AVE, GRADE
@@ -94,6 +88,5 @@
 	</select>
 	
 	
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 
 </mapper>

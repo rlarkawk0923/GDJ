@@ -56,8 +56,6 @@
 	    <delete id="deleteBoard" parameterType="int">
 	    	DELETE FROM BOARD WHERE BOARD_NO = #{boardNo}
 	    </delete>
-<<<<<<< HEAD
-=======
 	    
    <!--
       5. 게시글 수정
@@ -69,6 +67,5 @@
          SET TITLE = #{title}, CONTENT = #{content}
        WHERE BOARD_NO = #{boardNo}
    </update>
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 
 </mapper>

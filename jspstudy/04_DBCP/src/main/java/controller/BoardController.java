@@ -17,21 +17,13 @@ import service.BoardModifyService;
 import service.BoardRemoveService;
 import service.BoardService;
 
-<<<<<<< HEAD
-@WebServlet("*.do")
-
-=======
 
 @WebServlet("*.do")
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 public class BoardController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// 요청 / 응답 인코딩
@@ -58,11 +50,7 @@ public class BoardController extends HttpServlet {
 		case "board/detail.do":
 			service = new BoardDetailService();
 			break;
-<<<<<<< HEAD
-		case "board/add.do":
-=======
 		case "board/add.do" :
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 			service = new BoardAddService();
 			break;
 		case "board/edit.do":
@@ -74,19 +62,12 @@ public class BoardController extends HttpServlet {
 		case "board/remove.do":
 			service = new BoardRemoveService();
 			break;
-<<<<<<< HEAD
-=======
 			
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 		// 비즈니스 로직이 없는 경우(단순이동)
 		case "board/write.do":
 			af = new ActionForward();
 			af.setView("/board/write.jsp");
-<<<<<<< HEAD
-			af.setRedirect(false);  // 단순이동은 forward
-=======
 			af.setRedirect(false); // 단순 이동은 forward
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 			break;
 		}
 		

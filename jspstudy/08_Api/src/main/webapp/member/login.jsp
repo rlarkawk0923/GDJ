@@ -20,10 +20,7 @@ $(document).ready(function() {
           dataType: 'json',
           success: function(resData) {  // resData : {"dirname": "", "filename": ""}
              $('#ncaptcha').prop('src', '../' + resData.dirname + '/' + resData.filename);
-<<<<<<< HEAD
-=======
              $('#key').val(resData.key);
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
           }
        });
     });
@@ -35,11 +32,7 @@ $(document).ready(function() {
 	<div class="wrap">
 	
 		<h1>로그인</h1>
-<<<<<<< HEAD
-		<form>
-=======
 		<form action="${contextPath}/member/validateCaptcha.do" method="post">
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 			<div>
 				<input type="text" name="id" id="id" placeholder="아이디">
 			</div>
@@ -58,12 +51,8 @@ $(document).ready(function() {
 				</div>
 			</div>
 			<div>
-<<<<<<< HEAD
-				<input type="text" name="user_input" placeholder="자동입력 방지문자">
-=======
 				<input type="text" name="value" placeholder="자동입력 방지문자">
 				<input type="hidden" name="key" id="key" value="${key}">
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 			</div>
 			<div>
 				<button>로그인</button>

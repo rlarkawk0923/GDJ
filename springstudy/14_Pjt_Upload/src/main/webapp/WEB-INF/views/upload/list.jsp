@@ -34,15 +34,7 @@
 					<c:forEach items="${uploadList}" var="upload">
 						<tr>
 							<td>${upload.uploadNo}</td>
-<<<<<<< HEAD
-<<<<<<< HEAD
-							<td>${upload.title}</td>
-=======
 							<td><a href="${contextPath}/upload/detail?uploadNo=${upload.uploadNo}">${upload.title}</a></td>
->>>>>>> b5c256ee0d2db4290b9c7253b62aa7d62dbb3fab
-=======
-							<td><a href="${contextPath}/upload/detail?uploadNo=${upload.uploadNo}">${upload.title}</a></td>
->>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
 							<td>${upload.createDate}</td>
 							<td>${upload.attachCnt}</td>
 						</tr>

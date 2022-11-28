@@ -1,35 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath}" />
-=======
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"></c:set>
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
-<title>${board.board_no}번 게시글</title>
-=======
 <title>${board.boardNo}번 게시글</title>
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 <script src="../assets/js/jquery-3.6.1.min.js"></script>
 <script>
 	$(document).ready(function(){
 		
 		$('#btn_edit').click(function(event){
-<<<<<<< HEAD
-			location.href = '${contextPath}/board/edit.do?board_no=${board.board_no}';
-		});
-		
-		$('#btn_remove').click(function(event){
-			if(confirm('게시글을 삭제할까요?')){
-				location.href = '${contextPath}/board/remove.do?board_no=${board.board_no}';
-			} else {
-=======
 			location.href = '${contextPath}/board/edit.do?boardNo=${board.boardNo}';
 		});
 		
@@ -38,45 +20,18 @@
 			if(confirm('게시글을 삭제할까요?')){
 				location.href = '${contextPath}/board/remove.do?boardNo=${board.boardNo}';
 			}else{
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 				alert('취소되었습니다.');
 			}
 		});
 		
 		$('#btn_list').click(function(event){
-<<<<<<< HEAD
-			location.href = '${contextPath}/board/list.do';
-		});
-		
-	});
-=======
 			location.href = '${contextPath}/board/list.do'
 		})
 	})
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 </script>
 </head>
 <body>
 
-<<<<<<< HEAD
-	<h1>게시글 상세 보기</h1>
-	<div>
-		게시글 번호 : ${board.board_no}
-	</div>
-	<div>
-		게시글 제목 : ${board.title}
-	</div>
-	<div>
-		<pre>${board.content}</pre>
-	</div>
-	<div>
-		작성일자 : ${board.create_date}
-	</div>
-	<div>
-		<input type="button" value="편집" id="btn_edit">
-		<input type="button" value="삭제" id="btn_remove">
-		<input type="button" value="목록" id="btn_list">
-=======
 	<h1>${board.title}</h1>
 	<pre>${board.content}</pre>
 	<div>${board.createDate}</div>
@@ -86,7 +41,6 @@
 	<input type="button" value="편집" id="btn_edit">
 	<input type="button" value="삭제" id="btn_remove">
 	<input type="button" value="목록" id="btn_list">
->>>>>>> c75a8e6c98cc08ab96481493b891ba67c8be16f5
 	</div>
 
 </body>

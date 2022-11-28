@@ -152,19 +152,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      </Host>
-=======
-      <Context docBase="15_Pjt_Blog" path="/app15" reloadable="true" source="org.eclipse.jst.jee.server:15_Pjt_Blog"/></Host>
->>>>>>> e10b0b09a89f6ea94d3b2bfe88d4ae35480531c0
-=======
-      <Context docBase="15_Pjt_Blog" path="/app15" reloadable="true" source="org.eclipse.jst.jee.server:15_Pjt_Blog"/><Context docBase="11_Pjt_List" path="/app11" reloadable="true" source="org.eclipse.jst.jee.server:11_Pjt_List"/></Host>
->>>>>>> f6443e0ac4d9091aa572609a27895d5900647766
-=======
-      <Context docBase="15_Pjt_Blog" path="/app15" reloadable="true" source="org.eclipse.jst.jee.server:15_Pjt_Blog"/><Context docBase="11_Pjt_List" path="/app11" reloadable="true" source="org.eclipse.jst.jee.server:11_Pjt_List"/></Host>
->>>>>>> f6443e0ac4d9091aa572609a27895d5900647766
+      <Context docBase="semi_pjt_2" path="/semi02" reloadable="true" source="org.eclipse.jst.jee.server:semi_pjt_2"/></Host>
     </Engine>
   </Service>
 </Server>
