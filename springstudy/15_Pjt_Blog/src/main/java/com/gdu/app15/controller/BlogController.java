@@ -50,6 +50,7 @@ public class BlogController {
 		System.out.println(multipartRequest);
 		return blogService.saveSummernoteImage(multipartRequest);
 	}
+	
 	@GetMapping("/blog/increase/hit")
 	public String increaseHit(@RequestParam(value="blogNo", required = false, defaultValue = "0")int blogNo) {
 		int result = blogService.increaseBlogHit(blogNo);

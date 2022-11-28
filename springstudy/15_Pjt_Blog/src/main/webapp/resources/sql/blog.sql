@@ -1,4 +1,5 @@
 DROP TABLE COMMENTS;
+DROP TABLE SUMMERNOTE_IMAGE;
 DROP TABLE BLOG;
 
 -- 블로그
@@ -13,15 +14,22 @@ CREATE TABLE BLOG
     MODIFY_DATE DATE NOT NULL
 );
 
+-- 써머노트에서 사용된 이미지 목록(시퀀스는 사용하지 않음)
+CREATE TABLE SUMMERNOTE_IMAGE
+(
+    BLOG_NO NUMBER,
+    FILESYSTEM VARCHAR2(40 BYTE)
+);
+
 -- 댓글(1단 계층형)
 CREATE TABLE COMMENTS
 (
     COMMENT_NO NUMBER NOT NULL,
-    BLOG_NO NUMBER,	--외래키(on delete set null을 위해 not null 처리하면 안됨)
+    BLOG_NO NUMBER,             -- 외래키 (ON DELETE SET NULL을 위해 NOT NULL 처리하면 안 됨)
     CONTENT VARCHAR2(4000 BYTE) NOT NULL,
     STATE NUMBER NOT NULL,      -- 정상 1, 삭제 -1
-    DEPTH NUMBER NOT NULL,      -- 게시글 0, 댓글 1
-    GROUP_NO NUMBER NOT NULL,   -- 게시글과 해당 게시글에 달린 댓글은 같은 그룹
+    DEPTH NUMBER NOT NULL,      -- 댓글 0, 댓글의 답글 1
+    GROUP_NO NUMBER NOT NULL,   -- 댓글과 해당 댓글에 달린 답글은 같은 그룹
     CREATE_DATE DATE NOT NULL
 );
 
@@ -34,6 +42,12 @@ ALTER TABLE BLOG
 ALTER TABLE COMMENTS
     ADD CONSTRAINT PK_COMMENTS
         PRIMARY KEY(COMMENT_NO);
+
+-- 서머노트 이미지 외래키 : 블로그를 삭제하면 써머노트에서 사용한 이미지 파일도 삭제한다.
+ALTER TABLE SUMMERNOTE_IMAGE
+    ADD CONSTRAINT FK_SUMMERNOTE_BLOG
+        FOREIGN KEY(BLOG_NO) REFERENCES BLOG(BLOG_NO)
+            ON DELETE CASCADE;
 
 -- 댓글 외래키 : 댓글이 존재하는 블로그를 삭제하면 댓글의 BLOG_NO가 NULL 처리된다.
 ALTER TABLE COMMENTS
