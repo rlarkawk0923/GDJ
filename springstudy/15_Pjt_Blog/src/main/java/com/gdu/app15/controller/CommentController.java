@@ -20,16 +20,15 @@ public class CommentController {
 	@Autowired
 	private CommentService commentService;
 	
-	@ResponseBody
+	@ResponseBody//(ajax반환한거니까)
 	@GetMapping(value="/comment/getCount", produces="application/json")
 	public Map<String, Object> getCount(@RequestParam("blogNo") int blogNo) {
 		return commentService.getCommentCount(blogNo);
 	}
 	
-	// ajax 반환한거니ㅏ까
 	@ResponseBody
 	@PostMapping(value="/comment/add", produces="application/json")
-	public Map<String, Object> add(CommentDTO comment){
+	public Map<String, Object> add(CommentDTO comment) {
 		return commentService.addComment(comment);
 	}
 	
@@ -39,6 +38,16 @@ public class CommentController {
 		return commentService.getCommentList(request);
 	}
 	
-		
+	@ResponseBody
+	@PostMapping(value="/comment/remove", produces="application/json")
+	public Map<String, Object> remove(@RequestParam("commentNo") int commentNo){
+		return commentService.removeComment(commentNo);
+	}
+	
+	@ResponseBody
+	@PostMapping(value="/comment/reply/add", produces="application/json")
+	public Map<String, Object> replyAdd(CommentDTO reply){
+		return commentService.addReply(reply);
+	}
 	
 }

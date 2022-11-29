@@ -31,7 +31,7 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public Map<String, Object> addComment(CommentDTO comment) {
 		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("isAdd", commentMapper.insertComment(comment)==1);
+		result.put("isAdd", commentMapper.insertComment(comment) == 1);
 		return result;
 	}
 	
@@ -52,9 +52,23 @@ public class CommentServiceImpl implements CommentService {
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("commentList", commentMapper.selectCommentList(map));
 		result.put("pageUtil", pageUtil);
+		
+		return result;
+		
+	}
+	
+	@Override
+	public Map<String, Object> removeComment(int commentNo) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("isRemove", commentMapper.deleteComment(commentNo) == 1);
 		return result;
 	}
 	
-	
+	@Override
+	public Map<String, Object> addReply(CommentDTO reply) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("isAdd", commentMapper.insertReply(reply) == 1);
+		return result;
+	}
 	
 }
