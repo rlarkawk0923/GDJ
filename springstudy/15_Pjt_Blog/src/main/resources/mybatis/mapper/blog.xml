@@ -18,11 +18,22 @@
 		 WHERE A.ROW_NUM BETWEEN #{begin} AND #{end}
 	</select>
 	
+	<insert id="insertSummernoteImage" parameterType="SummernoteImageDTO">
+		INSERT INTO SUMMERNOTE_IMAGE
+			(BLOG_NO, FILESYSTEM)
+		VALUES
+			(#{blogNo}, #{filesystem})
+	</insert>
+	
 	<insert id="insertBlog" parameterType="BlogDTO">
+		<selectKey keyProperty="blogNo" resultType="int" order="BEFORE">
+			SELECT BLOG_SEQ.NEXTVAL
+			  FROM DUAL
+		</selectKey>
 		INSERT INTO BLOG
 			(BLOG_NO, TITLE, CONTENT, HIT, IP, CREATE_DATE, MODIFY_DATE)
 		VALUES
-			(BLOG_SEQ.NEXTVAL, #{title}, #{content}, 0, #{ip}, SYSDATE, SYSDATE)
+			(#{blogNo}, #{title}, #{content}, 0, #{ip}, SYSDATE, SYSDATE)
 	</insert>
 	
 	<update id="updateHit" parameterType="int">
@@ -50,5 +61,16 @@
 		  FROM BLOG
 		 WHERE BLOG_NO = #{blogNo}
 	</delete>
+	
+	<select id="selectSummernoteImageListInBlog" parameterType="int" resultType="SummernoteImageDTO">
+		SELECT BLOG_NO, FILESYSTEM
+		  FROM SUMMERNOTE_IMAGE
+		 WHERE BLOG_NO = #{blogNo}
+	</select>
+
+	<select id="selectAllSummernoteImageList" resultType="SummernoteImageDTO">
+		SELECT BLOG_NO, FILESYSTEM
+		  FROM SUMMERNOTE_IMAGE
+	</select>
 	
 </mapper>

@@ -4,7 +4,7 @@
 <%
 	Optional<String> opt = Optional.ofNullable(request.getParameter("title"));
 	String title = opt.orElse("Welcome");
-	pageContext.setAttribute("title", title); // EL 사용을 위함(${title}) 일반 자바변수는 el로 사용할 수 없다
+	pageContext.setAttribute("title", title);	// EL 사용을 위함(${title}) 일반 자바변수는 el로 사용할 수 없다
 	pageContext.setAttribute("contextPath", request.getContextPath());
 %>
 <!DOCTYPE html>
@@ -21,8 +21,5 @@
 <body>
 
 	<div>
-		<h1>Welcome to my blooooooooooooooooooooooooooog</h1>
+		<h1>Welcome To My BLOG</h1>
 	</div>
-	
-</body>
-</html>
