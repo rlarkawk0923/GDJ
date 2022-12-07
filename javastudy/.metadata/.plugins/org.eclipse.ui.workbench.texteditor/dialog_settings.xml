@@ -6,23 +6,23 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="play"/>
+		<item key="selection" value="obsrValue"/>
 		<list key="findhistory">
+			<item value="obsrValue"/>
+			<item value="category"/>
+			<item value="cate"/>
+			<item value="array"/>
+			<item value="printw"/>
+			<item value="print"/>
+			<item value="scanner"/>
+			<item value="sca"/>
+			<item value="data"/>
 			<item value="play"/>
 			<item value="ps = "/>
 			<item value="do"/>
 			<item value="애"/>
 			<item value="package api;"/>
 			<item value="속성"/>
-			<item value="xml"/>
-			<item value="array"/>
-			<item value="pars"/>
-			<item value="response"/>
-			<item value="int"/>
-			<item value="author"/>
-			<item value="생성"/>
-			<item value="reser"/>
-			<item value="trim"/>
 		</list>
 		<list key="replacehistory">
 			<item value="json"/>
@@ -32,8 +32,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1144"/>
-		<item key="DIALOG_Y_ORIGIN" value="206"/>
+		<item key="DIALOG_X_ORIGIN" value="1172"/>
+		<item key="DIALOG_Y_ORIGIN" value="640"/>
 		<item key="DIALOG_WIDTH" value="288"/>
 		<item key="DIALOG_HEIGHT" value="408"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

@@ -50,14 +50,16 @@ public class DeleteWrongFiles {
 		System.out.println("1   " + pathList.toString());     // 어제 저장되었다고 DB에 기록된 파일들
 		
 		// 어제 업로드 된 파일 목록 중 DB에 기록된 파일이 아닌 목록
-		File dir = new File(path);
-		File[] wrongFiles = dir.listFiles(new FilenameFilter() {
-			@Override
-			public boolean accept(File dir, String name) {
-				return !pathList.contains(new File(dir, name).toPath());
-			}
-		});
+		/*
+		 * File dir = new File(path); File[] wrongFiles = dir.listFiles(new
+		 * FilenameFilter() {
+		 * 
+		 * @Override public boolean accept(File dir, String name) { return
+		 * !pathList.contains(new File(dir, name).toPath()); } });
+		 */
 		
+		File dir = new File(path);
+		File[] wrongFiles = dir.listFiles((file -> pathList.contains(file.toPath())== false)); //반복문을 내장해서 돌려주는 람다
 		System.out.println("2   " + Arrays.toString(wrongFiles));  // 어제 저장된 파일 중 DB에 기록되어 있지 않은 파일들
 		
 		// 삭제
