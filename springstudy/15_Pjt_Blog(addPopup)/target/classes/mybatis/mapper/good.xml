@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.gdu.app15.mapper.GoodMapper">
+
+	<select id="selectUserGoodCount" parameterType="map" resultType="int">
+		SELECT COUNT(*)
+		  FROM GOOD
+		 WHERE BLOG_NO = #{blogNo}
+		   AND USER_NO = #{userNo}
+	</select>
+	
+	<select id="selectBlogGoodCount" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		  FROM GOOD
+		 WHERE BLOG_NO = #{blogNo}
+	</select>
+
+	<insert id="insertGood" parameterType="map">
+		INSERT INTO GOOD
+			(USER_NO, BLOG_NO, MARK_DATE)
+		VALUES
+			(#{userNo}, #{blogNo}, SYSDATE)
+	</insert>
+	
+	<delete id="deleteGood" parameterType="map">
+		DELETE
+		  FROM GOOD
+		 WHERE BLOG_NO = #{blogNo}
+		   AND USER_NO = #{userNo}
+	</delete>
+	
+</mapper>

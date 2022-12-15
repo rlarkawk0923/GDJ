@@ -56,7 +56,6 @@
 								/*
 									resData의 src 속성값이 ${contextPath}/load/image/aaa.jpg인 경우
 									<img src="${contextPath}/load/image/aaa.jpg"> 태그가 만들어진다.
-									
 									mapping=${contextPath}/load/image/aaa.jpg인 이미지의 실제 위치는
 									location=C:\\upload\\aaa.jpg이므로 이 내용을
 									servlet-context.xml에서 resource의 mapping값과 location값으로 등록해 준다.

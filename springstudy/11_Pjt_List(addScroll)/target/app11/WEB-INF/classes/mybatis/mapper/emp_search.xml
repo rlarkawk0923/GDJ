@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gdu.app11.mapper.EmpSearchMapper">
+	
+	<!-- employees와 departments의 조인을 위한 resultMap 만들기 - 2 -->
+	<resultMap type="EmpDTO" id="EmpMap">
+		<id column="EMPLOYEE_ID" property="employeeId" />
+		<result column="FIRST_NAME" property="firstName" />
+		<result column="LAST_NAME" property="lastName" />
+		<result column="EMAIL" property="email" />
+		<result column="PHONE_NUMBER" property="phoneNumber" />
+		<result column="HIRE_DATE" property="hireDate" />
+		<result column="JOB_ID" property="jobId" />
+		<result column="COMMISSION_PCT" property="commissionPct" />
+		<result column="SALARY" property="salary" />
+		<result column="MANAGER_ID" property="managerId" />
+		<association javaType="DeptDTO" property="deptDTO">
+			<id column="DEPARTMENT_ID" property="departmentId" />
+			<result column="DEPARTMENT_NAME" property="departmentName" />
+			<result column="MANAGER_ID" property="managerId" />
+			<result column="LOCATION_ID" property="locationId" />
+		</association>
+	</resultMap>
+
+	<!--
+		${}와 #{}의 차이 - ${}는 그냥 치환하고, #{}은 작은 따옴표(')로 묶어서 치환한다.
+		
+     	SELECT DISTINCT ${column}    : ${}는 그냥 치환하므로 아래와 같이 처리된다.
+		SELECT DISTINCT FIRST_NAME   : 정상 동작한다.
+
+		SELECT DISTINCT #{column}    : #{}는 작은 따옴표(')로 묶어서 값을 치환하므로 아래와 같이 처리된다.
+     	SELECT DISTINCT 'FIRST_NAME' : 이는 잘못된 사용이다.
+	-->
+
+	<select id="selectAutoCompleteList" parameterType="Map" resultType="EmpDTO">
+		SELECT DISTINCT ${column}
+		  FROM EMPLOYEES
+		 WHERE ${column} LIKE CONCAT(#{query}, '%')
+	</select>
+	
+	<select id="selectSearchCount" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		  FROM EMPLOYEES
+		<where>
+		    <if test="column=='EMPLOYEE_ID' or column=='DEPARTMENT_ID'">
+		    	${column} = #{query}
+		    </if>
+		    <if test="column=='FIRST_NAME' or column=='PHONE_NUMBER' or column=='EMAIL'">
+		    	${column} LIKE '%' || #{query} || '%'
+		    </if>
+		    <if test="column=='HIRE_DATE'">
+		    	${column} BETWEEN TO_DATE(#{start}, 'yyyy-mm-dd') AND TO_DATE(#{stop}, 'yyyy-mm-dd')
+		    </if>
+		    <if test="column=='SALARY'">
+		    	${column} BETWEEN #{start} AND #{stop}
+		    </if>
+		</where>
+	</select>
+	
+	<select id="selectSearchEmployeeList" parameterType="Map" resultMap="EmpMap">
+	
+		<!-- 조인하기 전에 조건 처리하는 것이 성능에 도움됨 -->
+	
+		<!-- 1. ROWNUM 가상 칼럼 사용 -->
+		<!--
+		SELECT B.*
+		  FROM (SELECT ROWNUM AS RN, A.*
+		          FROM (SELECT E.*, D.DEPARTMENT_NAME, D.LOCATION_ID
+		                  FROM DEPARTMENTS D RIGHT OUTER JOIN (SELECT * 
+				                                                 FROM EMPLOYEES
+				                                                <where>
+												                    <if test="column=='EMPLOYEE_ID' or column=='DEPARTMENT_ID'">
+												                    	${column} = #{query}
+												                    </if>
+												                    <if test="column=='FIRST_NAME' or column=='PHONE_NUMBER' or column=='EMAIL'">
+												                  		${column} LIKE '%' || #{query} || '%'
+												                  	</if>
+												                    <if test="column=='HIRE_DATE'">
+												                    	${column} BETWEEN TO_DATE(#{start}, 'yyyy-mm-dd') AND TO_DATE(#{stop}, 'yyyy-mm-dd')
+												                    </if>
+												                    <if test="column=='SALARY'">
+												                    	${column} BETWEEN #{start} AND #{stop}
+												                    </if>
+												                </where>) E
+		                    ON D.DEPARTMENT_ID = E.DEPARTMENT_ID
+		                 ORDER BY EMPLOYEE_ID ASC) A) B
+		 WHERE B.RN BETWEEN #{begin} AND #{end}
+		-->
+		
+		<!-- 2. ROW_NUMBER() 함수 사용 -->
+		SELECT A.*
+		  FROM (SELECT ROW_NUMBER() OVER(ORDER BY E.EMPLOYEE_ID ASC) AS RN, E.*, D.DEPARTMENT_NAME, D.LOCATION_ID
+		          FROM DEPARTMENTS D RIGHT OUTER JOIN (SELECT * 
+		                                                 FROM EMPLOYEES
+		                                                <where>
+										                    <if test="column=='EMPLOYEE_ID' or column=='DEPARTMENT_ID'">
+										                    	${column} = #{query}
+										                    </if>
+										                    <if test="column=='FIRST_NAME' or column=='PHONE_NUMBER' or column=='EMAIL'">
+										                    	${column} LIKE '%' || #{query} || '%'
+										                    </if>
+										                    <if test="column=='HIRE_DATE'">
+										                    	${column} BETWEEN TO_DATE(#{start}, 'yyyy-mm-dd') AND TO_DATE(#{stop}, 'yyyy-mm-dd')
+										                    </if>
+										                    <if test="column=='SALARY'">
+										                    	${column} BETWEEN #{start} AND #{stop}
+										                    </if>
+										                </where>) E
+		              ON D.DEPARTMENT_ID = E.DEPARTMENT_ID) A
+		 WHERE A.RN BETWEEN #{begin} AND #{end}
+		 
+	</select>
+
+</mapper>
